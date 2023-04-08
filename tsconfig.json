@@ -4,7 +4,7 @@
     "jsx": "react-jsx",
     "declarationDir": "dist"
   },
-  "files": ["src/orgname-app-name.tsx"],
+  "files": ["src/stagepass-app-auth.tsx"],
   "include": ["src/**/*"],
   "exclude": ["src/**/*.test*"]
 }
