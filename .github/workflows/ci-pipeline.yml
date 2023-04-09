@@ -16,6 +16,8 @@ jobs:
         with:
           node-version: 18
           cache: 'yarn'
+      - name: Authenticate with private NPM package
+        run: echo "//npm.pkg.github.com/:_authToken=${{ secrets.GH_TOKEN }}" > ~/.npmrc
       - name: Install dependencies
         run: yarn install
       - name: Generate build
