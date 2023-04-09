@@ -1,3 +1,10 @@
+# [1.1.0](https://github.com/stagePass/auth/compare/v1.0.1...v1.1.0) (2023-04-09)
+
+
+### Features
+
+* test new version ([f970685](https://github.com/stagePass/auth/commit/f9706852c541d2d5181dc0cefefa38bc85e2c3d5))
+
 ## [1.0.1](https://github.com/stagePass/auth/compare/v1.0.0...v1.0.1) (2023-04-09)
 
 
