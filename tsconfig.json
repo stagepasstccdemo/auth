@@ -2,7 +2,10 @@
   "extends": "ts-config-single-spa",
   "compilerOptions": {
     "jsx": "react-jsx",
-    "declarationDir": "dist"
+    "declarationDir": "dist",
+    "paths": {
+      "@stagepass/osiris-ui/components/*": ["./node_modules/@stagepass/osiris-ui/components"]
+    }
   },
   "files": ["src/stagepass-app-auth.tsx"],
   "include": ["src/**/*"],

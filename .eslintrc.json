@@ -30,7 +30,8 @@
         "import/no-unresolved": [
             "error",
             {
-                "ignore": ["root.component"]
+                "ignore": ["root.component", "@stagepass/osiris-ui/*"]
+
             }
         ],
         "import/extensions": ["off"]
