@@ -18,6 +18,8 @@ jobs:
           cache: 'yarn'
       - name: Install dependencies
         run: yarn install --registry=https://npm.pkg.github.com/
+        env:
+          AUTH_TOKEN: ${{ secrets.GH_TOKEN}}
       - name: Generate build
         run: yarn build:webpack
       - name: Upload Artifacts 
@@ -25,8 +27,6 @@ jobs:
         with:
           name: build-output
           path: dist/
-        env:
-          AUTH_TOKEN: ${{ secrets.GH_TOKEN}}
 
   publish:
     needs: build
@@ -39,12 +39,13 @@ jobs:
           name: build-output
       - name: Install dependencies
         run: yarn install --registry=https://npm.pkg.github.com/
+        env: 
+          AUTH_TOKEN: ${{ secrets.GH_TOKEN}}
       - name: Generate build
         run: yarn build:webpack
       - name: Semantic Release Versioning
         env: 
           GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
-          AUTH_TOKEN: ${{ secrets.GH_TOKEN}}
         run: npx semantic-release
     permissions:
       contents: write
@@ -60,6 +61,8 @@ jobs:
           cache: 'yarn'
       - name: Install dependencies
         run: yarn install --registry=https://npm.pkg.github.com/
+        env: 
+          AUTH_TOKEN: ${{ secrets.GH_TOKEN}}
       - name: BUILD
         run: yarn build:webpack
       - name: Set AWS Credentials
@@ -70,6 +73,4 @@ jobs:
           aws-region: ${{ secrets.AWS_REGION }}
       - name: Deploy App
         run: yarn deploy
-        env: 
-          AUTH_TOKEN: ${{ secrets.GH_TOKEN}}
 
