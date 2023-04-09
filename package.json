@@ -6,7 +6,7 @@
     "start": "webpack serve --port 8083",
     "start:standalone": "webpack serve --env standalone",
     "build": "concurrently yarn:build:*",
-    "build:webpack": "npm config set //npm.pkg.github.com/:_authToken GH_TOKEN webpack --mode=production",
+    "build:webpack": "npm config set //npm.pkg.github.com/:_authToken GH_TOKEN && webpack --mode=production",
     "analyze": "webpack --mode=production --env analyze",
     "lint": "eslint src --ext js,ts,tsx",
     "format": "prettier --write .",
