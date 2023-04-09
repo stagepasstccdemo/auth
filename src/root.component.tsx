@@ -1,4 +1,3 @@
-// @ts-nocheck
 import {
   DefaultLayout,
   Flex,
@@ -17,7 +16,7 @@ export default function Root(props) {
       </Center>
 
       <Flex gap="48" alignItems="center" justify="center" mt="20">
-        <TextBadge color="secondary">concertsaasdfasdfas</TextBadge>
+        <TextBadge color="primary">testando</TextBadge>
       </Flex>
     </DefaultLayout>
   );
