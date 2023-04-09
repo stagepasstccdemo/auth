@@ -9,5 +9,5 @@
   },
   "files": ["src/stagepass-app-auth.tsx"],
   "include": ["src/**/*"],
-  "exclude": ["src/**/*.test*"]
+  "exclude": ["src/**/*.test*","/node_modules/@stagepass/osiris-ui/node_modules/*"]
 }

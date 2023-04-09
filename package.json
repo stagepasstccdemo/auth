@@ -65,12 +65,12 @@
     "webpack-config-single-spa-ts": "^4.0.0",
     "webpack-dev-server": "^4.0.0",
     "webpack-merge": "^5.8.0",
-    "workbox-webpack-plugin": "^6.5.4"
+    "workbox-webpack-plugin": "^6.5.4",
+    "@stagepass/osiris-ui": "1.2.1"
   },
   "dependencies": {
     "@sentry/react": "^7.45.0",
     "@sentry/tracing": "^7.45.0",
-    "@stagepass/osiris-ui": "1.2.1",
     "@types/jest": "^27.0.1",
     "@types/react": "^17.0.19",
     "@types/react-dom": "^17.0.9",
