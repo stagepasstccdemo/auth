@@ -1,13 +1,17 @@
 import { useAuth } from "../../services/auth"
 
 export const Login = () => {
-  const {session, getAuthUI} = useAuth()
+  const {session, getAuthUI, signOut} = useAuth()
 
   if (!session) {
     return getAuthUI()
   }
   
   return (
-    <div>User logged in</div>
+    <div>
+      <h1>User logged in</h1>
+      <button type="button" onClick={signOut} style={{backgroundColor: "red"}}>SignOUT</button>
+
+    </div>
   )
 }

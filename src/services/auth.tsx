@@ -29,6 +29,10 @@ export const useAuth = () => {
 
   }, [])
 
+  const signOut = async () => {
+    await supabase.auth.signOut()
+  }
+
    const getAuthUI = () => {
     return (
       <Box style={{
@@ -44,7 +48,7 @@ export const useAuth = () => {
         <div style={{width: '40%'}}>
           <Auth
             supabaseClient={supabase} 
-            providers={['google', 'apple']}
+            providers={['google']}
             appearance={{theme: ThemeSupa}}
           />
         </div>
@@ -54,7 +58,7 @@ export const useAuth = () => {
 
 
   return {
-    session, getAuthUI
+    session, signOut, getAuthUI
   }
 }
 
