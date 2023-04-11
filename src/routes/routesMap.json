@@ -1,10 +1,10 @@
 [
   {
     "element": "Teste",
-    "path": "/"
+    "path": "/teste"
   },
   {
-    "element": "Steps",
-    "path": "steps"
+    "element": "Login",
+    "path": "/"
   }
 ]
