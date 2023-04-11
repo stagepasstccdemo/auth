@@ -4,6 +4,7 @@
     "jsx": "react-jsx",
     "declarationDir": "dist",
     "paths": {
+      "@stagepass/osiris-ui" : ["./osiris-ui"],
       "@stagepass/osiris-ui/components/*": ["./node_modules/@stagepass/osiris-ui/components"]
     }
   },

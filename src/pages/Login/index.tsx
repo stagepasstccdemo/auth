@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react"
+import { useState } from "react"
 import { getCookie, setCookie } from "../../constants/cookies";
 import {ChoiceSelection, FirstEntry, ShowHowFirst, ShowHowSecond, ShowHowThird, SignIn, SignUp} from "./steps"
 
