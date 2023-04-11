@@ -1,23 +1,11 @@
-import {
-  DefaultLayout,
-  Flex,
-  Logo,
-  Center,
-  TextBadge,
-} from "@stagepass/osiris-ui";
 
-import LogoImg from "./assets/logo.png";
+import { BrowserRouter } from "react-router-dom";
+import Routes from "./routes";
 
-export default function Root(props) {
+export default function Root() {
   return (
-    <DefaultLayout>
-      <Center h="90vh">
-        <Logo src={LogoImg} borderRadius="60px" boxSize="320px" />
-      </Center>
-
-      <Flex gap="48" alignItems="center" justify="center" mt="20">
-        <TextBadge color="primary">testando</TextBadge>
-      </Flex>
-    </DefaultLayout>
+    <BrowserRouter>
+      <Routes/>
+    </BrowserRouter>
   );
 }
