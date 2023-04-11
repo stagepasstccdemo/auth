@@ -3,7 +3,7 @@ import { getCookie, setCookie } from "../../constants/cookies";
 import {ChoiceSelection, FirstEntry, ShowHowFirst, ShowHowSecond, ShowHowThird, SignIn, SignUp} from "./steps"
 
 export const Login = () => {
-  const [isFirstVisit, setIsFirstVisit] = useState(false);
+  const [isFirstVisit, setIsFirstVisit] = useState(true);
   const [page, setPage] = useState(0);
 
   (function checkCookies() {

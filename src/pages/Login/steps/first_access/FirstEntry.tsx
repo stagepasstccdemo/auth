@@ -1,10 +1,23 @@
+import { DefaultLayout, Center, Flex, Logo, TextBadge } from "@stagepass/osiris-ui"
+import { useEffect } from "react";
+
+import LogoImg from "../../../../assets/logo.png";
+
 export const FirstEntry = ({page, setPage}) => {
+
+  useEffect(() => {
+    const timeoutId = setTimeout(() => {
+      setPage(page + 1);
+    }, 200);
+
+    return () => clearTimeout(timeoutId);
+  }, [page, setPage]);
+
   return (
-    <div>
-      <h1>First Entry</h1>
-      <button type="button" onClick={() => {
-        setPage(page + 1);
-      }}>Próxima Etapa</button>
-    </div>
+    <DefaultLayout>
+      <Center h="90vh">
+        <Logo src={LogoImg} borderRadius="60px" boxSize="320px" />
+      </Center>
+    </DefaultLayout>
   )
 }
