@@ -2,13 +2,13 @@ import { DefaultLayout, Flex, Pills } from "@stagepass/osiris-ui";
 import { useEffect } from "react";
 
 export const ShowHowSecond = ({setPage, page}) => {
-  // useEffect(() => {
-  //   const timeoutId = setTimeout(() => {
-  //     setPage(page + 1);
-  //   }, 40000);
+  useEffect(() => {
+    const timeoutId = setTimeout(() => {
+      setPage(page + 1);
+    }, 40000);
 
-  //   return () => clearTimeout(timeoutId);
-  // }, [page, setPage])
+    return () => clearTimeout(timeoutId);
+  }, [page, setPage])
 
   return (
     <DefaultLayout>
