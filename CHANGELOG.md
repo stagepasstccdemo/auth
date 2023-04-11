@@ -1,3 +1,19 @@
+# [1.4.0](https://github.com/stagePass/auth/compare/v1.3.0...v1.4.0) (2023-04-11)
+
+
+### Bug Fixes
+
+* add type definitions to routes ([c9b977e](https://github.com/stagePass/auth/commit/c9b977e4c3bc7f9fef944dfd367b2e5e8d61dab5))
+
+
+### Features
+
+* creates multip-step form ([f424520](https://github.com/stagePass/auth/commit/f424520c424a4e8ef3ef0bd738cc9519f5164779))
+* creates useAuth hook for supabase login ([08d7764](https://github.com/stagePass/auth/commit/08d7764902daf530f3eba3081b9de896c4e3aae3))
+* implement signOut feature ([f11d0f1](https://github.com/stagePass/auth/commit/f11d0f119958a82bbd4e1ea59181b8a051c553c1))
+* setup supabase authentication login ([5ce6faf](https://github.com/stagePass/auth/commit/5ce6faf8a19250707e78c9347f2067a318bcbd7c))
+* start creating pages style ([b8e374c](https://github.com/stagePass/auth/commit/b8e374c0c8326ccde4e10ea4d7af05d94a35451b))
+
 # [1.3.0](https://github.com/stagePass/auth/compare/v1.2.0...v1.3.0) (2023-04-09)
 
 
