@@ -1,17 +1,34 @@
-import { useAuth } from "../../services/auth"
+import { useEffect, useState } from "react"
+import { getCookie, setCookie } from "../../constants/cookies";
+import {ChoiceSelection, FirstEntry, ShowHowFirst, ShowHowSecond, ShowHowThird, SignIn, SignUp} from "./steps"
 
 export const Login = () => {
-  const {session, getAuthUI, signOut} = useAuth()
+  const [isFirstVisit, setIsFirstVisit] = useState(false);
+  const [page, setPage] = useState(0);
 
-  if (!session) {
-    return getAuthUI()
-  }
-  
+  (function checkCookies() {
+    const cookies = getCookie('@stagepass:first_access');
+    if (!cookies) {
+      setCookie('@stagepass:first_access', 'true', 365);
+      setIsFirstVisit(true);
+    }
+  })();
+
+  const isFirstAccessComponents = isFirstVisit ? [
+    <FirstEntry page={page} setPage={setPage}/>,
+    <ShowHowFirst page={page} setPage={setPage}/>,
+    <ShowHowSecond page={page} setPage={setPage}/>,
+    <ShowHowThird page={page} setPage={setPage}/>
+  ]: []
+
+  const componentList = [
+    ...isFirstAccessComponents,
+    <ChoiceSelection page={page} setPage={setPage}/>,
+    <SignIn page={page} setPage={setPage}/>,
+    <SignUp page={page} setPage={setPage}/>,
+  ]
+
   return (
-    <div>
-      <h1>User logged in</h1>
-      <button type="button" onClick={signOut} style={{backgroundColor: "red"}}>SignOUT</button>
-
-    </div>
+    <div>{componentList[page]}</div>
   )
 }
