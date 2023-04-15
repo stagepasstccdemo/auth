@@ -34,7 +34,9 @@
 
             }
         ],
-        "import/extensions": ["off"]
+        "import/extensions": ["off"],
+        "import/prefer-default-export": "off",
+        "no-shadow": "off"
     }  ,
     "settings": {
         "import/resolver": {

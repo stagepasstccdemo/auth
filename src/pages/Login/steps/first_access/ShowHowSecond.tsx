@@ -1,36 +1,42 @@
 import { DefaultLayout, Flex, Pills } from "@stagepass/osiris-ui";
 import { useEffect } from "react";
 
-export const ShowHowSecond = ({setPage, page}) => {
+export function ShowHowSecond({ setPage, page }) {
   useEffect(() => {
     const timeoutId = setTimeout(() => {
       setPage(page + 1);
     }, 40000);
 
     return () => clearTimeout(timeoutId);
-  }, [page, setPage])
+  }, [page, setPage]);
 
   return (
     <DefaultLayout>
-      <Flex flexDirection="column" alignItems="center" justifyContent="space-between">
-      <div style={{
-        position: "relative",
-      }}>
-        <h1>Have Fun In every way possible</h1>
-        <Flex flexDirection="column">
-          <button>Concerts</button>
-          <button>Festivals</button>
-          <button>Sports</button>
-          <button>Talks</button>  
+      <Flex
+        flexDirection="column"
+        alignItems="center"
+        justifyContent="space-between"
+      >
+        <div
+          style={{
+            position: "relative",
+          }}
+        >
+          <h1>Have Fun In every way possible</h1>
+          <Flex flexDirection="column">
+            <button type="button">Concerts</button>
+            <button type="button">Festivals</button>
+            <button type="button">Sports</button>
+            <button type="button">Talks</button>
+          </Flex>
+          <h1>And a whole lot more...</h1>
+        </div>
+        <Flex gap={20}>
+          <Pills />
+          <Pills selected />
+          <Pills />
         </Flex>
-        <h1>And a whole lot more...</h1>
-      </div>
-      <Flex gap={20}>
-        <Pills/>
-        <Pills selected/>
-        <Pills/>
-      </Flex>
       </Flex>
     </DefaultLayout>
-  )
+  );
 }

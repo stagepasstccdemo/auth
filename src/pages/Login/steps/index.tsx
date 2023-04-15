@@ -1,4 +1,4 @@
-export * from "./first_access/FirstEntry";
+export * from "./first_access/SplashScreen";
 export * from "./first_access/ShowHowFirst";
 export * from "./first_access/ShowHowSecond";
 export * from "./first_access/ShowHowThird";
