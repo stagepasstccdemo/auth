@@ -15,29 +15,29 @@ import { useSwipeGestures } from "@hooks/useSwipeable";
 import { useEffect } from "react";
 
 const pills = [
-  { key: 1, selected: false, onClick: () => setPage(page - 2) },
-  { key: 2, selected: false, onClick: () => setPage(page - 1) },
-  { key: 3, selected: true, onClick: () => setPage(page + 1) },
+  { key: 1, selected: false, onClick: () => setPage("ShowHowFirst") },
+  { key: 2, selected: false, onClick: () => setPage("ShowHowSecond") },
+  { key: 3, selected: true, onClick: () => setPage("ShowHowThird") },
 ];
 
-export function ShowHowThird({ setPage, page }) {
+export function ShowHowThird({ setPage }) {
   const { swipeGestures } = useSwipeGestures({
     handler: {
-      left: () => setPage(page + 1),
-      right: () => setPage(page - 1),
+      left: () => setPage("ChoiceSelection"),
+      right: () => setPage("ShowHowSecond"),
     },
     swipeDuration: 800,
   });
 
   useEffect(() => {
     setTimeout(() => {
-      setPage(page + 1);
+      setPage("ChoiceSelection");
     }, 2000);
 
     return () => {
       clearTimeout();
     };
-  }, [page, setPage]);
+  }, [setPage]);
 
   return (
     <DefaultLayout>

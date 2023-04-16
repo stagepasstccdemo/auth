@@ -10,13 +10,13 @@ import {
 
 import { IoTicketOutline } from "react-icons/io5";
 
-export function ChoiceSelection({ page, setPage }) {
+export function ChoiceSelection({ setPage }) {
   const handleSignIn = () => {
-    setPage(page + 1);
+    setPage("SignIn");
   };
 
   const handleSignUp = () => {
-    setPage(page + 2);
+    setPage("SignUp");
   };
 
   return (

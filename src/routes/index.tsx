@@ -9,9 +9,7 @@ export default function Routes() {
       {lazyRoutes.map(({ RouteComponent, path }) => (
         <Route
           element={
-            <React.Suspense
-              fallback={<SplashScreen page={0} setPage={() => {}} />}
-            >
+            <React.Suspense fallback={<SplashScreen setPage={() => {}} />}>
               <RouteComponent />
             </React.Suspense>
           }

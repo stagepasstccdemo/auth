@@ -25,16 +25,16 @@ const badges = [
 ];
 
 const pills = [
-  { key: 1, selected: false, onClick: () => setPage(page - 1) },
-  { key: 2, selected: true, onClick: () => setPage(page + 1) },
-  { key: 3, selected: false, onClick: () => setPage(page + 2) },
+  { key: 1, selected: false, onClick: () => setPage("ShowHowFirst") },
+  { key: 2, selected: true },
+  { key: 3, selected: false, onClick: () => setPage("ShowHowThird") },
 ];
 
-export function ShowHowSecond({ setPage, page }) {
+export function ShowHowSecond({ setPage }) {
   const { swipeGestures } = useSwipeGestures({
     handler: {
-      left: () => setPage(page + 1),
-      right: () => setPage(page - 1),
+      left: () => setPage("ShowHowThird"),
+      right: () => setPage("ShowHowFirst"),
     },
     swipeDuration: 800,
   });

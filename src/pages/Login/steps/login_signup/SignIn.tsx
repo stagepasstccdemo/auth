@@ -13,17 +13,17 @@ import {
 import { IoArrowBack } from "react-icons/io5";
 import { FaGoogle } from "react-icons/fa";
 
-export function SignIn({ page, setPage }) {
+export function SignIn({ setPage }) {
   const handleSignUp = () => {
-    setPage(page + 1);
+    setPage("SignUp");
   };
 
   const handleGoBack = () => {
-    setPage(page - 1);
+    setPage("ChoiceSelection");
   };
 
   const handleResetPassword = () => {
-    setPage(page + 2);
+    setPage("ResetPassword");
   };
 
   return (

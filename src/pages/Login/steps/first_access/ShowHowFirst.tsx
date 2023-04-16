@@ -13,17 +13,18 @@ import TicketsImg from "@assets/tickets_image.png";
 import LogoCursiveImg from "@assets/logo-cursive.png";
 import { useSwipeGestures } from "@hooks/useSwipeable";
 
-export function ShowHowFirst({ page, setPage }) {
+export function ShowHowFirst({ setPage }) {
   const { swipeGestures } = useSwipeGestures({
     handler: {
-      left: () => setPage(page + 1),
+      right: () => setPage("ShowHowFirst"),
+      left: () => setPage("ShowHowSecond"),
     },
     swipeDuration: 800,
   });
 
   const pills = [
     { key: 1, selected: true },
-    { key: 2, selected: false, onClick: () => setPage(page + 1) },
+    { key: 2, selected: false, onClick: () => setPage("ShowHowSecond") },
     { key: 3, selected: false },
   ];
 
