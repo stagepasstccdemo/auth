@@ -51,7 +51,6 @@ export function SignIn({ setPage }) {
 
         <Heading as="h2" text="Sign In" mb="5" color="gray.100" />
       </Flex>
-
       <Box
         height="78vh"
         bgColor="white"
