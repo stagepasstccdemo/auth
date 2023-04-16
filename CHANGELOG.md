@@ -1,3 +1,11 @@
+## [1.6.1](https://github.com/stagePass/auth/compare/v1.6.0...v1.6.1) (2023-04-16)
+
+
+### Bug Fixes
+
+* background-color on auth mfe ([2b21d73](https://github.com/stagePass/auth/commit/2b21d73565fa2934cb7a9e9537dd48a4aa0ce4fe))
+* layout issues ([1f178e0](https://github.com/stagePass/auth/commit/1f178e0385022ca338262c3c09d1c0b3cfd5f64e))
+
 # [1.6.0](https://github.com/stagePass/auth/compare/v1.5.0...v1.6.0) (2023-04-16)
 
 
