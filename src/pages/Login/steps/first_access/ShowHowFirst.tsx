@@ -11,6 +11,7 @@ import {
 
 import { useSwipeable } from "react-swipeable";
 
+import { useEffect } from "react";
 import TicketsImg from "../../../../assets/tickets_image.png";
 import LogoCursiveImg from "../../../../assets/logo-cursive.png";
 
@@ -21,9 +22,22 @@ export function ShowHowFirst({ page, setPage }) {
     trackMouse: true,
   });
 
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setPage(page + 1);
+    }, 2);
+    return () => clearInterval(interval);
+  });
+
   return (
     <DefaultLayout>
-      <Flex direction="column" {...swipeGestures}>
+      <Flex
+        direction="column"
+        alignItems="center"
+        justifyContent="space-between"
+        height="100vh"
+        {...swipeGestures}
+      >
         <Box px="20" py="52">
           <Heading as="h1" color="gray.100">
             Welcome to
@@ -45,17 +59,10 @@ export function ShowHowFirst({ page, setPage }) {
           <Image src={TicketsImg} alt="StagePass" />
         </Box>
 
-        <Flex
-          marginTop={18}
-          flexDirection="column"
-          alignItems="center"
-          justifyContent="center"
-        >
-          <Flex gap={20}>
-            <Pills selected />
-            <Pills onClick={() => setPage(page + 1)} />
-            <Pills />
-          </Flex>
+        <Flex gap={20} pb="22">
+          <Pills selected />
+          <Pills onClick={() => setPage(page + 1)} />
+          <Pills />
         </Flex>
       </Flex>
     </DefaultLayout>

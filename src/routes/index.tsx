@@ -1,6 +1,7 @@
 import React from "react";
 import { Routes as Switch, Route } from "react-router-dom";
 import { lazyRoutes } from "./lazyRoutes";
+import { SplashScreen } from "../pages/Login/steps";
 
 export default function Routes() {
   return (
@@ -8,7 +9,9 @@ export default function Routes() {
       {lazyRoutes.map(({ RouteComponent, path }) => (
         <Route
           element={
-            <React.Suspense fallback={<div>Loading...</div>}>
+            <React.Suspense
+              fallback={<SplashScreen page={0} setPage={() => {}} />}
+            >
               <RouteComponent />
             </React.Suspense>
           }
