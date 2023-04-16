@@ -7,6 +7,7 @@ import {
   MultipleBadges,
   FullFlexWithGestures,
   MultiplePills,
+  TextBadge,
 } from "@stagepass/osiris-ui";
 
 import { useSwipeGestures } from "@hooks/useSwipeable";
@@ -24,9 +25,9 @@ const badges = [
 ];
 
 const pills = [
-  { key: 1, selected: false },
-  { key: 2, selected: true },
-  { key: 3, selected: false, onClick: () => setPage(page + 1) },
+  { key: 1, selected: false, onClick: () => setPage(page - 1) },
+  { key: 2, selected: true, onClick: () => setPage(page + 1) },
+  { key: 3, selected: false, onClick: () => setPage(page + 2) },
 ];
 
 export function ShowHowSecond({ setPage, page }) {
@@ -45,9 +46,11 @@ export function ShowHowSecond({ setPage, page }) {
         swipe={swipeGestures}
       >
         <Box px="40" py="52">
-          <Heading as="h1" color="gray.100">
-            Have Fun In every way possible
-          </Heading>
+          <Heading
+            as="h1"
+            color="gray.100"
+            text="Have Fun In every way possible"
+          />
 
           <MultipleBadges
             direction="column"
@@ -57,9 +60,7 @@ export function ShowHowSecond({ setPage, page }) {
             badges={badges}
           />
           <Flex alignItems="center" pt="40" pl="20" textAlign="flex-start">
-            <Heading as="h2" color="gray.100">
-              and a whole lot more...
-            </Heading>
+            <Heading as="h2" color="gray.100" text="and a whole lot more..." />
           </Flex>
         </Box>
 

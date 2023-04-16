@@ -42,9 +42,12 @@ export function ShowHowFirst({ page, setPage }) {
         </Box>
 
         <Box ml="6rem">
-          <Text color="gray.100" fontSize="xl" maxWidth="14rem">
-            Get tickets for everything you ll ever need
-          </Text>
+          <Text
+            color="gray.100"
+            fontSize="xl"
+            maxWidth="14rem"
+            text="Get tickets for everything you ll ever need"
+          />
         </Box>
 
         <Box mr="4rem">

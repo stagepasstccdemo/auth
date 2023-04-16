@@ -6,10 +6,19 @@ import {
   Heading,
   Pills,
   Image,
+  FullFlexWithGestures,
+  MultiplePills,
 } from "@stagepass/osiris-ui";
 
 import EventsImage from "@assets/events-image.png";
 import { useSwipeGestures } from "@hooks/useSwipeable";
+import { useEffect } from "react";
+
+const pills = [
+  { key: 1, selected: false, onClick: () => setPage(page - 2) },
+  { key: 2, selected: false, onClick: () => setPage(page - 1) },
+  { key: 3, selected: true, onClick: () => setPage(page + 1) },
+];
 
 export function ShowHowThird({ setPage, page }) {
   const { swipeGestures } = useSwipeGestures({
@@ -20,19 +29,28 @@ export function ShowHowThird({ setPage, page }) {
     swipeDuration: 800,
   });
 
+  useEffect(() => {
+    setTimeout(() => {
+      setPage(page + 1);
+    }, 2000);
+
+    return () => {
+      clearTimeout();
+    };
+  }, [page, setPage]);
+
   return (
     <DefaultLayout>
-      <Flex
-        flexDirection="column"
-        alignItems="center"
+      <FullFlexWithGestures
         justifyContent="space-between"
-        height="100vh"
-        {...swipeGestures}
+        swipe={swipeGestures}
       >
         <Box px="40" py="52" pb="0">
-          <Heading as="h1" color="gray.100">
-            Without even getting out of your chair
-          </Heading>
+          <Heading
+            as="h1"
+            color="gray.100"
+            text="Without even getting out of your chair"
+          />
         </Box>
 
         <Box mr="6rem">
@@ -43,12 +61,9 @@ export function ShowHowThird({ setPage, page }) {
             width="280px"
           />
         </Box>
-        <Flex gap={20} pb="22">
-          <Pills />
-          <Pills onClick={() => setPage(page - 1)} />
-          <Pills selected onClick={() => setPage(page + 1)} />
-        </Flex>
-      </Flex>
+
+        <MultiplePills gap={20} pb={22} alignItems="center" pills={pills} />
+      </FullFlexWithGestures>
     </DefaultLayout>
   );
 }
