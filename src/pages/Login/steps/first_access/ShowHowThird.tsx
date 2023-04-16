@@ -32,7 +32,7 @@ export function ShowHowThird({ setPage }) {
   useEffect(() => {
     setTimeout(() => {
       setPage("ChoiceSelection");
-    }, 2000);
+    }, 4000);
 
     return () => {
       clearTimeout();
