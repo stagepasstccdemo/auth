@@ -1,11 +1,11 @@
-export function SignUp({ page, setPage }) {
+export function SignUp({ setPage }) {
   return (
     <div>
       <h1>Sign Up</h1>
       <button
         type="button"
         onClick={() => {
-          setPage(page + 1);
+          setPage("SignIn");
         }}
       >
         Próxima Etapa

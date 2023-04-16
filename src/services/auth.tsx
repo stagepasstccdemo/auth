@@ -33,6 +33,20 @@ export const useAuth = () => {
     await supabase.auth.signOut();
   };
 
+  const signInWithGoogle = async () => {
+    const { data, error } = await supabase.auth.signInWithOAuth({
+      provider: "google",
+      options: {
+        queryParams: {
+          access_type: "offline",
+          prompt: "consent",
+        },
+      },
+    });
+
+    return { data, error };
+  };
+
   const getAuthUI = () => {
     return (
       <Box
@@ -60,6 +74,7 @@ export const useAuth = () => {
   return {
     session,
     signOut,
+    signInWithGoogle,
     getAuthUI,
   };
 };

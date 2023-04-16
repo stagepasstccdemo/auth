@@ -1,15 +1,8 @@
-export function ResetPassword({ page, setPage }) {
+export function ResetPassword({ setPage }) {
   return (
     <div>
       <h1>Reset Password</h1>
-      <button
-        type="button"
-        onClick={() => {
-          setPage(page + 1);
-        }}
-      >
-        Próxima Etapa
-      </button>
+      <button type="button">Próxima Etapa</button>
     </div>
   );
 }

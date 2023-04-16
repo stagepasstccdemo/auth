@@ -8,16 +8,16 @@ import {
 } from "@stagepass/osiris-ui";
 import { useEffect } from "react";
 
-import LogoImg from "../../../../assets/logo.png";
+import LogoImg from "@assets/logo.png";
 
-export function SplashScreen({ page, setPage }) {
+export function SplashScreen({ setPage }) {
   useEffect(() => {
     const timeoutId = setTimeout(() => {
-      setPage(page + 1);
-    }, 2);
+      setPage("ShowHowFirst");
+    }, 1500);
 
     return () => clearTimeout(timeoutId);
-  }, [page, setPage]);
+  }, [setPage]);
 
   return (
     <DefaultLayout>

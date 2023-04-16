@@ -2,7 +2,7 @@ import React from "react";
 import routes from "./routesMap.json";
 
 type PagesModule = {
-  [key: string]: React.ComponentType;
+  [key: string]: any;
 };
 
 export const lazyRoutes = routes.map(({ element, path }) => {

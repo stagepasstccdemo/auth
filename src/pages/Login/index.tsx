@@ -1,5 +1,6 @@
 import { useState } from "react";
-import { getCookie, setCookie } from "../../constants/cookies";
+import { getCookie, setCookie } from "@constants/cookies";
+
 import {
   ChoiceSelection,
   SplashScreen,
@@ -9,10 +10,11 @@ import {
   SignIn,
   SignUp,
 } from "./steps";
+import { ResetPassword } from "./steps/login_signup/ResetPassword";
 
 export function Login() {
   const [isFirstVisit, setIsFirstVisit] = useState(true);
-  const [page, setPage] = useState(0);
+  const [page, setPage] = useState("SplashScreen");
 
   (function checkCookies() {
     const cookies = getCookie("@stagepass:first_access");
@@ -24,19 +26,43 @@ export function Login() {
 
   const isFirstAccessComponents = isFirstVisit
     ? [
-        <ShowHowFirst page={page} setPage={setPage} />,
-        <ShowHowSecond page={page} setPage={setPage} />,
-        <ShowHowThird page={page} setPage={setPage} />,
+        {
+          name: "ShowHowFirst",
+          component: <ShowHowFirst setPage={setPage} />,
+        },
+        {
+          name: "ShowHowSecond",
+          component: <ShowHowSecond setPage={setPage} />,
+        },
+        {
+          name: "ShowHowThird",
+          component: <ShowHowThird setPage={setPage} />,
+        },
       ]
     : [];
 
   const componentList = [
-    <SplashScreen page={page} setPage={setPage} />,
+    {
+      name: "SplashScreen",
+      component: <SplashScreen setPage={setPage} />,
+    },
     ...isFirstAccessComponents,
-    <ChoiceSelection page={page} setPage={setPage} />,
-    <SignIn page={page} setPage={setPage} />,
-    <SignUp page={page} setPage={setPage} />,
+    {
+      name: "ChoiceSelection",
+      component: <ChoiceSelection setPage={setPage} />,
+    },
+    { name: "SignIn", component: <SignIn setPage={setPage} /> },
+    { name: "SignUp", component: <SignUp setPage={setPage} /> },
+    {
+      name: "ResetPassword",
+      component: <ResetPassword setPage={setPage} />,
+    },
   ];
 
-  return <div>{componentList[page]}</div>;
+  const componentIndex = componentList.findIndex(
+    (component) => component.name === page
+  );
+  const currentComponent = componentList[componentIndex];
+
+  return <div>{currentComponent.component}</div>;
 }
