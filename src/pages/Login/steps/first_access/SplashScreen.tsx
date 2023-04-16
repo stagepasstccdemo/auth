@@ -8,7 +8,7 @@ import {
 } from "@stagepass/osiris-ui";
 import { useEffect } from "react";
 
-import LogoImg from "../../../../assets/logo.png";
+import LogoImg from "@assets/logo.png";
 
 export function SplashScreen({ page, setPage }) {
   useEffect(() => {

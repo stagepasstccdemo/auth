@@ -12,8 +12,8 @@ import {
 import { useSwipeable } from "react-swipeable";
 
 import { useEffect } from "react";
-import TicketsImg from "../../../../assets/tickets_image.png";
-import LogoCursiveImg from "../../../../assets/logo-cursive.png";
+import TicketsImg from "@assets/tickets_image.png";
+import LogoCursiveImg from "@assets/logo-cursive.png";
 
 export function ShowHowFirst({ page, setPage }) {
   const swipeGestures = useSwipeable({

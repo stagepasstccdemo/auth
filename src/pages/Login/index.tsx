@@ -1,5 +1,6 @@
 import { useState } from "react";
-import { getCookie, setCookie } from "../../constants/cookies";
+import { getCookie, setCookie } from "@constants/cookies";
+
 import {
   ChoiceSelection,
   SplashScreen,

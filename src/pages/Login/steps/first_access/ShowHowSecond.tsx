@@ -7,8 +7,10 @@ import {
   Heading,
   TextBadge,
 } from "@stagepass/osiris-ui";
-import { useEffect } from "react";
+
 import { useSwipeable } from "react-swipeable";
+
+import { useEffect } from "react";
 
 export function ShowHowSecond({ setPage, page }) {
   const swipeGestures = useSwipeable({
