@@ -7,27 +7,23 @@ import {
   IconButton,
   Button,
   InputWithLabel,
-  Text,
   Divider,
 } from "@stagepass/osiris-ui";
 
 import { IoArrowBack } from "react-icons/io5";
 import { FaGoogle } from "react-icons/fa";
-import { useNavigate } from "react-router-dom";
 
 export function SignIn({ page, setPage }) {
-  const navigate = useNavigate();
-
-  const handleGoBack = () => {
-    navigate("/");
+  const handleSignUp = () => {
+    setPage(page + 1);
   };
 
-  const handleSignUp = () => {
-    navigate("/signUp");
+  const handleGoBack = () => {
+    setPage(page - 1);
   };
 
   const handleResetPassword = () => {
-    navigate("/resetPassword");
+    setPage(page + 2);
   };
 
   return (

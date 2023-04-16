@@ -10,6 +10,7 @@ import {
   SignIn,
   SignUp,
 } from "./steps";
+import { ResetPassword } from "./steps/login_signup/ResetPassword";
 
 export function Login() {
   const [isFirstVisit, setIsFirstVisit] = useState(true);
@@ -32,11 +33,12 @@ export function Login() {
     : [];
 
   const componentList = [
-    // <SplashScreen page={page} setPage={setPage} />,
-    // ...isFirstAccessComponents,
+    <SplashScreen page={page} setPage={setPage} />,
+    ...isFirstAccessComponents,
     <ChoiceSelection page={page} setPage={setPage} />,
     <SignIn page={page} setPage={setPage} />,
     <SignUp page={page} setPage={setPage} />,
+    <ResetPassword page={page} setPage={setPage} />,
   ];
 
   return <div>{componentList[page]}</div>;

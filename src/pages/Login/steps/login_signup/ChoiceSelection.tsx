@@ -9,17 +9,14 @@ import {
 } from "@stagepass/osiris-ui";
 
 import { IoTicketOutline } from "react-icons/io5";
-import { useNavigate } from "react-router-dom";
 
 export function ChoiceSelection({ page, setPage }) {
-  const navigate = useNavigate();
-
   const handleSignIn = () => {
-    navigate("/signIn");
+    setPage(page + 1);
   };
 
   const handleSignUp = () => {
-    navigate("/signUp");
+    setPage(page + 2);
   };
 
   return (
