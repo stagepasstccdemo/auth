@@ -81,7 +81,9 @@
     "commitizen": "^4.3.0",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
+    "react-icons": "^4.8.0",
     "react-router-dom": "^6.10.0",
+    "react-swipeable": "^7.0.0",
     "semantic-release": "^21.0.0",
     "single-spa": "^5.9.3",
     "single-spa-react": "^4.3.1"
@@ -102,8 +104,7 @@
   ],
   "release": {
     "branches": [
-      "main",
-      "staging"
+      "main"
     ],
     "prepare": [
       "@semantic-release/changelog",

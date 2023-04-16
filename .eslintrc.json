@@ -23,6 +23,7 @@
     ],
     "rules": {
         "react/jsx-filename-extension": [1, { "extensions": [".tsx", ".jsx"] }],
+        "react/jsx-props-no-spreading": "off",
         "react/destructuring-assignment": "off",
         "react/prop-types": "off",
         "import/no-extraneous-dependencies": "off",
@@ -34,7 +35,9 @@
 
             }
         ],
-        "import/extensions": ["off"]
+        "import/extensions": ["off"],
+        "import/prefer-default-export": "off",
+        "no-shadow": "off"
     }  ,
     "settings": {
         "import/resolver": {

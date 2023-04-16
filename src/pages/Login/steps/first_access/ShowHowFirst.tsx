@@ -1,36 +1,70 @@
-import { DefaultLayout, Flex, Pills } from "@stagepass/osiris-ui"
-import { useEffect } from "react"
+// @ts-nocheck
+import {
+  DefaultLayout,
+  Flex,
+  Pills,
+  Heading,
+  Box,
+  Image,
+  Text,
+} from "@stagepass/osiris-ui";
 
-import TicketsImg from "../../../../assets/tickets_image.png"
-import TicketBg from "../../../../assets/ticket_bg.png"
+import { useSwipeable } from "react-swipeable";
 
-export const ShowHowFirst = ({page, setPage}) => {
+import { useEffect } from "react";
+import TicketsImg from "../../../../assets/tickets_image.png";
+import LogoCursiveImg from "../../../../assets/logo-cursive.png";
+
+export function ShowHowFirst({ page, setPage }) {
+  const swipeGestures = useSwipeable({
+    onSwipedLeft: () => setPage(page + 1),
+    swipeDuration: 800,
+    trackMouse: true,
+  });
 
   useEffect(() => {
-    const timeoutId = setTimeout(() => {
+    const interval = setInterval(() => {
       setPage(page + 1);
-    }, 200);
-
-    return () => clearTimeout(timeoutId);
-  }, [page, setPage])
+    }, 2);
+    return () => clearInterval(interval);
+  });
 
   return (
     <DefaultLayout>
-      <Flex flexDirection="column" alignItems="center" justifyContent="center">
-      <div style={{
-        position: "relative",
-      }}>
-        <h1>Welcome to stagePass</h1>
-        <p>Get tickets for everything you'll ever need</p>
-        <img src={TicketsImg}></img>
-        <img src={TicketBg} style={{position: "absolute"}}/>
-      </div>
-      <Flex gap={20}>
-        <Pills selected/>
-        <Pills/>
-        <Pills/>
-      </Flex>
+      <Flex
+        direction="column"
+        alignItems="center"
+        justifyContent="space-between"
+        height="100vh"
+        {...swipeGestures}
+      >
+        <Box px="20" py="52">
+          <Heading as="h1" color="gray.100">
+            Welcome to
+            <Image
+              src={LogoCursiveImg}
+              alt="StagePass"
+              objectFit="contain"
+              width="280px"
+            />
+          </Heading>
+        </Box>
+
+        <Box ml="6rem">
+          <Text color="gray.100" fontSize="xl" maxWidth="14rem">
+            Get tickets for everything you ll ever need
+          </Text>
+        </Box>
+        <Box mr="4rem">
+          <Image src={TicketsImg} alt="StagePass" />
+        </Box>
+
+        <Flex gap={20} pb="22">
+          <Pills selected />
+          <Pills onClick={() => setPage(page + 1)} />
+          <Pills />
+        </Flex>
       </Flex>
     </DefaultLayout>
-  )
+  );
 }
