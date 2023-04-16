@@ -1,53 +1,44 @@
 // @ts-nocheck
 import {
   DefaultLayout,
-  Flex,
-  Pills,
-  Heading,
   Box,
   Image,
   Text,
+  FullFlexWithGestures,
+  TextWithImage,
+  MultiplePills,
 } from "@stagepass/osiris-ui";
 
-import { useSwipeable } from "react-swipeable";
-
-import { useEffect } from "react";
 import TicketsImg from "@assets/tickets_image.png";
 import LogoCursiveImg from "@assets/logo-cursive.png";
+import { useSwipeGestures } from "@hooks/useSwipeable";
 
 export function ShowHowFirst({ page, setPage }) {
-  const swipeGestures = useSwipeable({
-    onSwipedLeft: () => setPage(page + 1),
+  const { swipeGestures } = useSwipeGestures({
+    handler: {
+      left: () => setPage(page + 1),
+    },
     swipeDuration: 800,
-    trackMouse: true,
   });
 
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setPage(page + 1);
-    }, 2);
-    return () => clearInterval(interval);
-  });
+  const pills = [
+    { key: 1, selected: true },
+    { key: 2, selected: false, onClick: () => setPage(page + 1) },
+    { key: 3, selected: false },
+  ];
 
   return (
     <DefaultLayout>
-      <Flex
-        direction="column"
-        alignItems="center"
-        justifyContent="space-between"
-        height="100vh"
-        {...swipeGestures}
-      >
+      <FullFlexWithGestures swipe={swipeGestures}>
         <Box px="20" py="52">
-          <Heading as="h1" color="gray.100">
-            Welcome to
-            <Image
-              src={LogoCursiveImg}
-              alt="StagePass"
-              objectFit="contain"
-              width="280px"
-            />
-          </Heading>
+          <TextWithImage
+            as="h1"
+            color="gray.100"
+            text="Welcome to"
+            alt="StagePass"
+            width="280px"
+            src={LogoCursiveImg}
+          />
         </Box>
 
         <Box ml="6rem">
@@ -55,16 +46,13 @@ export function ShowHowFirst({ page, setPage }) {
             Get tickets for everything you ll ever need
           </Text>
         </Box>
+
         <Box mr="4rem">
           <Image src={TicketsImg} alt="StagePass" />
         </Box>
 
-        <Flex gap={20} pb="22">
-          <Pills selected />
-          <Pills onClick={() => setPage(page + 1)} />
-          <Pills />
-        </Flex>
-      </Flex>
+        <MultiplePills gap={20} pb={22} alignItems="center" pills={pills} />
+      </FullFlexWithGestures>
     </DefaultLayout>
   );
 }

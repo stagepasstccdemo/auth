@@ -8,24 +8,17 @@ import {
   Image,
 } from "@stagepass/osiris-ui";
 
-import { useSwipeable } from "react-swipeable";
-
-import { useEffect } from "react";
-
 import EventsImage from "@assets/events-image.png";
+import { useSwipeGestures } from "@hooks/useSwipeable";
 
 export function ShowHowThird({ setPage, page }) {
-  const swipeGestures = useSwipeable({
-    onSwipedLeft: () => setPage(page + 1),
-    onSwipedRight: () => setPage(page - 1),
+  const { swipeGestures } = useSwipeGestures({
+    handler: {
+      left: () => setPage(page + 1),
+      right: () => setPage(page - 1),
+    },
     swipeDuration: 800,
-    trackMouse: true,
   });
-
-  // useEffect(() => {
-  //   const timer = setTimeout(() => setPage(page + 1), 1);
-  //   return () => clearTimeout(timer);
-  // });
 
   return (
     <DefaultLayout>

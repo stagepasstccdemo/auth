@@ -14,7 +14,7 @@ export function SplashScreen({ page, setPage }) {
   useEffect(() => {
     const timeoutId = setTimeout(() => {
       setPage(page + 1);
-    }, 2);
+    }, 1500);
 
     return () => clearTimeout(timeoutId);
   }, [page, setPage]);

@@ -8,24 +8,16 @@ import {
   TextBadge,
 } from "@stagepass/osiris-ui";
 
-import { useSwipeable } from "react-swipeable";
-
-import { useEffect } from "react";
+import { useSwipeGestures } from "@hooks/useSwipeable";
 
 export function ShowHowSecond({ setPage, page }) {
-  const swipeGestures = useSwipeable({
-    onSwipedLeft: () => setPage(page + 1),
-    onSwipedRight: () => setPage(page - 1),
+  const { swipeGestures } = useSwipeGestures({
+    handler: {
+      left: () => setPage(page + 1),
+      right: () => setPage(page - 1),
+    },
     swipeDuration: 800,
-    trackMouse: true,
   });
-
-  // useEffect(() => {
-  //   const interval = setInterval(() => {
-  //     setPage(page + 1);
-  //   }, 2);
-  //   return () => clearInterval(interval);
-  // });
 
   return (
     <DefaultLayout>
