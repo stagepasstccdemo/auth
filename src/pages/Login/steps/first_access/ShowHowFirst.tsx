@@ -54,15 +54,21 @@ export function ShowHowFirst({ setPage }) {
         <Box position="relative" width="100vw" height="100vh">
           <Box
             position="absolute"
-            top="45%"
+            top="44%"
             right="10%"
             transform="translate(0, -50%)"
-            width="100%"
+            width="90%"
           >
             <Image src={TicketsImg} alt="StagePass" objectFit="cover" />
           </Box>
         </Box>
-        <MultiplePills gap={20} pb={22} alignItems="center" pills={pills} />
+        <MultiplePills
+          gap={20}
+          pb={22}
+          alignItems="center"
+          pills={pills}
+          zIndex={1}
+        />
       </FullFlexWithGestures>
     </DefaultLayout>
   );

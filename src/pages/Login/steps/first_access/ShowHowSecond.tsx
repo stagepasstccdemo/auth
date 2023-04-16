@@ -45,7 +45,7 @@ export function ShowHowSecond({ setPage }) {
         justifyContent="space-between"
         swipe={swipeGestures}
       >
-        <Box px="40" py="52">
+        <Box px="40" py="52" pb="0">
           <Heading
             as="h1"
             color="gray.100"
