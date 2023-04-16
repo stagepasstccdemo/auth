@@ -14,5 +14,9 @@
   {
     "element": "SignUp",
     "path": "/signUp"  
+  },
+  {
+    "element": "ResetPassword",
+    "path": "/resetPassword"  
   }
 ]

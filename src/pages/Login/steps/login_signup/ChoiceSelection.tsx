@@ -41,6 +41,7 @@ export function ChoiceSelection({ page, setPage }) {
             rounded="2xl"
             bgColor="gray.700"
             color="gray.100"
+            py={6}
             onClick={handleSignIn}
           >
             login
@@ -49,6 +50,7 @@ export function ChoiceSelection({ page, setPage }) {
             rounded="2xl"
             bgColor="gray.400"
             color="gray.100"
+            py={6}
             onClick={handleSignUp}
           >
             signup
