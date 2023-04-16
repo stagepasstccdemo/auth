@@ -12,8 +12,11 @@ import {
 
 import { IoArrowBack } from "react-icons/io5";
 import { FaGoogle } from "react-icons/fa";
+import { useAuth } from "@services/auth";
 
 export function SignIn({ setPage }) {
+  const { signInWithGoogle } = useAuth();
+
   const handleSignUp = () => {
     setPage("SignUp");
   };
@@ -28,7 +31,7 @@ export function SignIn({ setPage }) {
 
   return (
     <DefaultLayout>
-      <Flex direction="column" px="20" py="32">
+      <Flex direction="column" px="20" py="32" gap="5">
         <Box display="flex" justifyContent="space-between" alignItems="center">
           <IconButton
             rounded="xl"
@@ -46,7 +49,7 @@ export function SignIn({ setPage }) {
           </Button>
         </Box>
 
-        <Heading as="h2" text="Sign In" mt="5" mb="5" color="gray.100" />
+        <Heading as="h2" text="Sign In" mb="5" color="gray.100" />
       </Flex>
 
       <Box
@@ -116,6 +119,7 @@ export function SignIn({ setPage }) {
             gap="5"
             py={6}
             leftIcon={<FaGoogle />}
+            onClick={signInWithGoogle}
           >
             sign in with google
           </Button>
