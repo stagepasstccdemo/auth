@@ -32,8 +32,8 @@ export function Login() {
     : [];
 
   const componentList = [
-    <SplashScreen page={page} setPage={setPage} />,
-    ...isFirstAccessComponents,
+    // <SplashScreen page={page} setPage={setPage} />,
+    // ...isFirstAccessComponents,
     <ChoiceSelection page={page} setPage={setPage} />,
     <SignIn page={page} setPage={setPage} />,
     <SignUp page={page} setPage={setPage} />,
