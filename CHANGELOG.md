@@ -1,3 +1,17 @@
+# [1.5.0](https://github.com/stagePass/auth/compare/v1.4.0...v1.5.0) (2023-04-16)
+
+
+### Bug Fixes
+
+* remove staging branch from package.json semantic release ([dbda27c](https://github.com/stagePass/auth/commit/dbda27c78fb09d3da77069fc523d480017ad19ad))
+
+
+### Features
+
+* create some steps screen ui ([c2ee893](https://github.com/stagePass/auth/commit/c2ee893bfb5e4f6d608796f8659e607bba3186b0))
+* creates first-access screen-1 ([c67c0a5](https://github.com/stagePass/auth/commit/c67c0a5395c874e942b173d7962aad097d5faa59))
+* setup authetication | router | steppers ([43207d1](https://github.com/stagePass/auth/commit/43207d184b5b608bcd08b7cb04700147bae39b84))
+
 # [1.4.0](https://github.com/stagePass/auth/compare/v1.3.0...v1.4.0) (2023-04-11)
 
 
