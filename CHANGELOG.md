@@ -1,3 +1,19 @@
+# [1.6.0](https://github.com/stagePass/auth/compare/v1.5.0...v1.6.0) (2023-04-16)
+
+
+### Bug Fixes
+
+* error on navigation ([caf42d7](https://github.com/stagePass/auth/commit/caf42d7e2f7d20695bf65c3d4f4acb25c641e496))
+* horizontal scroll bar on signin page ([7edb73c](https://github.com/stagePass/auth/commit/7edb73c0d227d27057630d4e7b3890cefc8fcfc3))
+
+
+### Features
+
+* add routing and starts to make signIn UI ([092cb39](https://github.com/stagePass/auth/commit/092cb3916e7a3cfb2519f3e5fe6c770b26a01344))
+* change Badge component props ([c8cf3eb](https://github.com/stagePass/auth/commit/c8cf3ebd09e5282a16609a215ab92e22bc946745))
+* creates signIn form ([d1ae2d3](https://github.com/stagePass/auth/commit/d1ae2d32a22e8ea6841b04ae380bc87db0c7437d))
+* use new components from osiris-ui to make coder more maintainable and create useSwipe hook ([40f3383](https://github.com/stagePass/auth/commit/40f33835a0e413c0a174d6a20d75010e5096f309))
+
 # [1.5.0](https://github.com/stagePass/auth/compare/v1.4.0...v1.5.0) (2023-04-16)
 
 
