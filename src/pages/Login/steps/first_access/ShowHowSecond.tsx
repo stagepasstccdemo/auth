@@ -18,12 +18,12 @@ export function ShowHowSecond({ setPage, page }) {
     trackMouse: true,
   });
 
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setPage(page + 1);
-    }, 2);
-    return () => clearInterval(interval);
-  });
+  // useEffect(() => {
+  //   const interval = setInterval(() => {
+  //     setPage(page + 1);
+  //   }, 2);
+  //   return () => clearInterval(interval);
+  // });
 
   return (
     <DefaultLayout>
@@ -39,12 +39,18 @@ export function ShowHowSecond({ setPage, page }) {
             Have Fun In every way possible
           </Heading>
           <Flex direction="column" alignItems="start" pt="20" gap="20">
-            <TextBadge>concerts</TextBadge>
-            <TextBadge width="60%">festivals</TextBadge>
-            <TextBadge width="80%">sports</TextBadge>
-            <TextBadge width="100%">talks</TextBadge>
+            <TextBadge bgColor="default">concerts</TextBadge>
+            <TextBadge width="60%" bgColor="primary">
+              festivals
+            </TextBadge>
+            <TextBadge width="80%" bgColor="ternary" variant="outline">
+              sports
+            </TextBadge>
+            <TextBadge width="100%" bgColor="secondary">
+              talks
+            </TextBadge>
           </Flex>
-          <Flex alignItems="center" pt="26" pl="20" textAlign="flex-start">
+          <Flex alignItems="center" pt="40" pl="20" textAlign="flex-start">
             <Heading as="h2" color="gray.100">
               and a whole lot more...
             </Heading>
