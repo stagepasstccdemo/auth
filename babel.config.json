@@ -16,6 +16,21 @@
         "useESModules": true,
         "regenerator": false
       }
+    ],
+    [
+      "module-resolver", 
+      {
+        "root": ["./src"],
+        "alias": {
+          "@assets": "./src/assets",
+          "@constants": "./src/constants",
+          "@hooks": "./src/hooks",
+          "@pages": "./src/pages",
+          "@services": "./src/services",
+          "@routes": "./src/routes",
+          "@util": "./src/util"
+        }
+      }
     ]
   ],
   "env": {
