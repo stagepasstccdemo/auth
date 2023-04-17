@@ -1,3 +1,10 @@
+# [1.7.0](https://github.com/stagePass/auth/compare/v1.6.1...v1.7.0) (2023-04-17)
+
+
+### Features
+
+* refactor steps structure ([977de33](https://github.com/stagePass/auth/commit/977de33d48381058033821e2b6a4e720140cabe2))
+
 ## [1.6.1](https://github.com/stagePass/auth/compare/v1.6.0...v1.6.1) (2023-04-16)
 
 
