@@ -9,9 +9,10 @@ import {
   MultiplePills,
 } from "@stagepass/osiris-ui";
 
+import { useSwipeGestures } from "@hooks/useSwipeable";
+
 import TicketsImg from "@assets/tickets_image.png";
 import LogoCursiveImg from "@assets/logo-cursive.png";
-import { useSwipeGestures } from "@hooks/useSwipeable";
 
 export function ShowHowFirst({ setPage }) {
   const { swipeGestures } = useSwipeGestures({
@@ -23,9 +24,9 @@ export function ShowHowFirst({ setPage }) {
   });
 
   const pills = [
-    { key: 1, selected: true },
+    { key: 1, selected: true, onClick: () => setPage("ShowHowFirst") },
     { key: 2, selected: false, onClick: () => setPage("ShowHowSecond") },
-    { key: 3, selected: false },
+    { key: 3, selected: false, onClick: () => setPage("ShowHowThird") },
   ];
 
   return (
@@ -54,10 +55,10 @@ export function ShowHowFirst({ setPage }) {
         <Box position="relative" width="100vw" height="100vh">
           <Box
             position="absolute"
-            top="44%"
-            right="10%"
+            top="48%"
+            right="15%"
             transform="translate(0, -50%)"
-            width="90%"
+            width="85%"
           >
             <Image src={TicketsImg} alt="StagePass" objectFit="cover" />
           </Box>

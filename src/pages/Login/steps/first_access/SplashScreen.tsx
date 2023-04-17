@@ -6,6 +6,7 @@ import {
   Flex,
   Spinner,
 } from "@stagepass/osiris-ui";
+
 import { useEffect } from "react";
 
 import LogoImg from "@assets/logo.png";
@@ -14,7 +15,7 @@ export function SplashScreen({ setPage }) {
   useEffect(() => {
     const timeoutId = setTimeout(() => {
       setPage("ShowHowFirst");
-    }, 1500);
+    }, 2500);
 
     return () => clearTimeout(timeoutId);
   }, [setPage]);

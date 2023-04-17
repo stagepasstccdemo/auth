@@ -7,7 +7,6 @@ import {
   MultipleBadges,
   FullFlexWithGestures,
   MultiplePills,
-  TextBadge,
 } from "@stagepass/osiris-ui";
 
 import { useSwipeGestures } from "@hooks/useSwipeable";
@@ -26,7 +25,7 @@ const badges = [
 
 const pills = [
   { key: 1, selected: false, onClick: () => setPage("ShowHowFirst") },
-  { key: 2, selected: true },
+  { key: 2, selected: true, onClick: () => setPage("ShowHowSecond") },
   { key: 3, selected: false, onClick: () => setPage("ShowHowThird") },
 ];
 
