@@ -2,9 +2,7 @@
 import {
   Box,
   DefaultLayout,
-  Flex,
   Heading,
-  Pills,
   Image,
   FullFlexWithGestures,
   MultiplePills,
@@ -32,7 +30,7 @@ export function ShowHowThird({ setPage }) {
   useEffect(() => {
     setTimeout(() => {
       setPage("ChoiceSelection");
-    }, 4000);
+    }, 6000);
 
     return () => {
       clearTimeout();
