@@ -73,7 +73,13 @@ export function ShowHowThird({ setPage }) {
           />
         </Box>
 
-        <MultiplePills gap={20} pb={22} alignItems="center" pills={pills} />
+        <MultiplePills
+          gap={20}
+          pb={22}
+          alignItems="center"
+          pills={pills}
+          setPage={setPage}
+        />
       </FullFlexWithGestures>
     </DefaultLayout>
   );

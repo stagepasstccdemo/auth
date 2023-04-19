@@ -82,6 +82,7 @@ export function ShowHowFirst({ setPage }) {
           alignItems="center"
           pills={pills}
           zIndex={1}
+          setPage={setPage}
         />
       </FullFlexWithGestures>
     </DefaultLayout>
