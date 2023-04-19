@@ -3,7 +3,7 @@ import { useState } from "react";
 import { getStepperComponents } from "./steps/stepperSettings";
 
 export function Login() {
-  const [isFirstVisit, setIsFirstVisit] = useState(true);
+  const [isFirstVisit, setIsFirstVisit] = useState(false);
   const [page, setPage] = useState("SplashScreen");
 
   const componentList = getStepperComponents({ setPage, isFirstVisit });

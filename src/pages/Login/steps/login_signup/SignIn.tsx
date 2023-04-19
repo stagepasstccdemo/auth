@@ -13,6 +13,22 @@ import {
 import { IoArrowBack } from "react-icons/io5";
 import { FaGoogle } from "react-icons/fa";
 import { useAuth } from "@services/auth";
+import { useForm } from "react-hook-form";
+import { useState } from "react";
+
+import { z } from "zod";
+import { zodResolver } from "@hookform/resolvers/zod";
+
+const signInUserFormSchema = z.object({
+  email: z
+    .string()
+    .nonempty("O e-mail é obrigatório")
+    .email("Formato de e-mail inválido")
+    .toLowerCase(),
+  password: z.string().min(6, "A senha deve ter no mínimo 6 caracteres"),
+});
+
+type SignInUserForm = z.infer<z.ZodRequired<typeof signInUserFormSchema>>;
 
 export function SignIn({ setPage }) {
   const { signInWithGoogle } = useAuth();
@@ -29,101 +45,145 @@ export function SignIn({ setPage }) {
     setPage("ResetPassword");
   };
 
+  const [output, setOutput] = useState("");
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<SignInUserForm>({
+    resolver: zodResolver(signInUserFormSchema),
+  });
+
+  const signInUser = (data: any) => {
+    setOutput(JSON.stringify(data, null, 2));
+  };
+
   return (
     <DefaultLayout>
-      <Flex direction="column" px="20" py="32" gap="5">
-        <Box display="flex" justifyContent="space-between" alignItems="center">
-          <IconButton
-            rounded="xl"
-            icon={<IoArrowBack color="white" size={26} />}
-            bgColor="gray.700"
-            onClick={handleGoBack}
-          />
-          <Button
-            variant="link"
-            color="white"
-            fontWeight="regular"
-            onClick={handleSignUp}
+      <form onSubmit={handleSubmit(signInUser)}>
+        <Flex direction="column" px="20" py="32" gap="5">
+          <Box
+            display="flex"
+            justifyContent="space-between"
+            alignItems="center"
           >
-            SignUp
-          </Button>
-        </Box>
+            <IconButton
+              h="3rem"
+              w="3rem"
+              rounded="xl"
+              bgColor="gray.700"
+              icon={<IoArrowBack color="white" size={26} />}
+              onClick={handleGoBack}
+            />
+            <Button
+              variant="link"
+              color="white"
+              fontWeight="regular"
+              onClick={handleSignUp}
+            >
+              SignUp
+            </Button>
+          </Box>
 
-        <Heading as="h2" text="Sign In" mb="5" color="gray.100" />
-      </Flex>
-      <Box
-        height="78vh"
-        bgColor="white"
-        borderTopRadius={40}
-        p={20}
-        display="flex"
-        flexDirection="column"
-        justifyContent="space-around"
-      >
-        <Flex direction="column" gap="20">
-          <InputWithLabel
-            text="Enter your email"
-            gap="5"
-            placeholder="john_doe@example.com"
-            bgColor="gray.700"
-            rounded="xl"
-            py={6}
-          />
-          <InputWithLabel
-            text="Enter your password"
-            gap="5"
-            placeholder="password"
-            bgColor="gray.700"
-            rounded="xl"
-            py={6}
-          />
-          <Button
-            variant="link"
-            fontSize="sm"
-            fontWeight="regular"
-            alignSelf="flex-end"
-            onClick={handleResetPassword}
-          >
-            Forgot Password
-          </Button>
+          <Heading as="h2" text="Sign In" mb="5" color="gray.100" />
         </Flex>
+        <Box
+          height="78vh"
+          bgColor="white"
+          borderTopRadius={40}
+          p={20}
+          display="flex"
+          flexDirection="column"
+          justifyContent="space-around"
+        >
+          <Flex direction="column" gap="20">
+            <InputWithLabel
+              text="Enter your email"
+              gap="5"
+              placeholder="john-doe@mail.com"
+              bgColor="gray.700"
+              color="gray.100"
+              rounded="xl"
+              focusBorderColor="os-primary.100"
+              py={6}
+              name="email"
+              register={register}
+              error={errors.email}
+            />
 
-        <Box>
-          <Button
-            bgColor="gray.700"
-            color="gray.100"
-            rounded="xl"
-            width="100%"
-            mb="10"
-            py={6}
-          >
-            sign in
-          </Button>
-          <Divider
-            text="or"
-            border="1"
-            distance="6"
-            borderColor="gray.700"
-            borderWidth="2px"
-            rounded="full"
-          />
+            <InputWithLabel
+              text="Enter your password"
+              gap="5"
+              placeholder="password"
+              bgColor="gray.700"
+              color="gray.100"
+              rounded="xl"
+              focusBorderColor="os-primary.100"
+              type="password"
+              py={6}
+              name="password"
+              register={register}
+              error={errors.password}
+            />
 
-          <Button
-            bgColor="gray.700"
-            color="gray.100"
-            rounded="xl"
-            width="100%"
-            mt="10"
-            justifyContent="center"
-            gap="5"
-            py={6}
-            leftIcon={<FaGoogle />}
-            onClick={signInWithGoogle}
-          >
-            sign in with google
-          </Button>
+            <Button
+              variant="link"
+              fontSize="sm"
+              fontWeight="regular"
+              alignSelf="flex-end"
+              onClick={handleResetPassword}
+            >
+              Forgot Password
+            </Button>
+          </Flex>
+
+          <Box>
+            <Button
+              bgColor="gray.700"
+              color="gray.100"
+              rounded="xl"
+              width="100%"
+              mb="10"
+              py={6}
+              type="submit"
+            >
+              sign in
+            </Button>
+            <Divider
+              text="or"
+              border="1"
+              distance="6"
+              borderColor="gray.700"
+              borderWidth="2px"
+              rounded="full"
+            />
+
+            <Button
+              bgColor="gray.700"
+              color="gray.100"
+              rounded="xl"
+              width="100%"
+              mt="10"
+              justifyContent="center"
+              gap="5"
+              py={6}
+              leftIcon={<FaGoogle />}
+              onClick={signInWithGoogle}
+            >
+              sign in with google
+            </Button>
+          </Box>
         </Box>
-      </Box>
+      </form>
+      {output && (
+        <pre
+          style={{
+            color: "white",
+          }}
+        >
+          {output}
+        </pre>
+      )}
     </DefaultLayout>
   );
 }

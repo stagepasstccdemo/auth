@@ -69,7 +69,7 @@ export function ShowHowThird({ setPage }) {
             src={EventsImage}
             alt="StagePass"
             objectFit="contain"
-            width="280px"
+            width="260px"
           />
         </Box>
 

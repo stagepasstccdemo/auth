@@ -7,6 +7,7 @@ import {
   FullFlexWithGestures,
   TextWithImage,
   MultiplePills,
+  Skeleton,
 } from "@stagepass/osiris-ui";
 
 import { useSwipeGestures } from "@hooks/useSwipeable";

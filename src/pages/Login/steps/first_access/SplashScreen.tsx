@@ -14,7 +14,7 @@ import LogoImg from "@assets/logo.png";
 export function SplashScreen({ setPage }) {
   useEffect(() => {
     const timeoutId = setTimeout(() => {
-      setPage("ShowHowFirst");
+      setPage("SignIn");
     }, 2500);
 
     return () => clearTimeout(timeoutId);
@@ -29,7 +29,7 @@ export function SplashScreen({ setPage }) {
           alignItems="center"
           justifyContent="center"
         >
-          <Logo src={LogoImg} borderRadius="60px" boxSize="320px" />
+          <Logo src={LogoImg} fall borderRadius="60px" boxSize="20rem" />
           <Spinner boxSize={40} thickness="4px" speed="0.60s" color="white" />
         </Flex>
       </Center>
