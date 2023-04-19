@@ -11,11 +11,24 @@ import {
 import EventsImage from "@assets/events-image.png";
 import { useSwipeGestures } from "@hooks/useSwipeable";
 import { useEffect } from "react";
+import { setPageProps } from "../types";
 
 const pills = [
-  { key: 1, selected: false, onClick: () => setPage("ShowHowFirst") },
-  { key: 2, selected: false, onClick: () => setPage("ShowHowSecond") },
-  { key: 3, selected: true, onClick: () => setPage("ShowHowThird") },
+  {
+    key: 1,
+    selected: false,
+    onClick: (setPage: setPageProps) => setPage("ShowHowFirst"),
+  },
+  {
+    key: 2,
+    selected: false,
+    onClick: (setPage: setPageProps) => setPage("ShowHowSecond"),
+  },
+  {
+    key: 3,
+    selected: true,
+    onClick: (setPage: setPageProps) => setPage("ShowHowThird"),
+  },
 ];
 
 export function ShowHowThird({ setPage }) {

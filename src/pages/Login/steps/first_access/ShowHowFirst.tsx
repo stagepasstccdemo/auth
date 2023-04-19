@@ -13,6 +13,7 @@ import { useSwipeGestures } from "@hooks/useSwipeable";
 
 import TicketsImg from "@assets/tickets_image.png";
 import LogoCursiveImg from "@assets/logo-cursive.png";
+import { setPageProps } from "../types";
 
 export function ShowHowFirst({ setPage }) {
   const { swipeGestures } = useSwipeGestures({
@@ -24,9 +25,21 @@ export function ShowHowFirst({ setPage }) {
   });
 
   const pills = [
-    { key: 1, selected: true, onClick: () => setPage("ShowHowFirst") },
-    { key: 2, selected: false, onClick: () => setPage("ShowHowSecond") },
-    { key: 3, selected: false, onClick: () => setPage("ShowHowThird") },
+    {
+      key: 1,
+      selected: true,
+      onClick: (setPage: setPageProps) => setPage("ShowHowFirst"),
+    },
+    {
+      key: 2,
+      selected: false,
+      onClick: (setPage: setPageProps) => setPage("ShowHowSecond"),
+    },
+    {
+      key: 3,
+      selected: false,
+      onClick: (setPage: setPageProps) => setPage("ShowHowThird"),
+    },
   ];
 
   return (

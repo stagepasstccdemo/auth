@@ -10,6 +10,7 @@ import {
 } from "@stagepass/osiris-ui";
 
 import { useSwipeGestures } from "@hooks/useSwipeable";
+import { setPageProps } from "../types";
 
 const badges = [
   { key: 1, text: "concerts", bgColor: "default" },
@@ -24,9 +25,21 @@ const badges = [
 ];
 
 const pills = [
-  { key: 1, selected: false, onClick: () => setPage("ShowHowFirst") },
-  { key: 2, selected: true, onClick: () => setPage("ShowHowSecond") },
-  { key: 3, selected: false, onClick: () => setPage("ShowHowThird") },
+  {
+    key: 1,
+    selected: false,
+    onClick: (setPage: setPageProps) => setPage("ShowHowFirst"),
+  },
+  {
+    key: 2,
+    selected: true,
+    onClick: (setPage: setPageProps) => setPage("ShowHowSecond"),
+  },
+  {
+    key: 3,
+    selected: false,
+    onClick: (setPage: setPageProps) => setPage("ShowHowThird"),
+  },
 ];
 
 export function ShowHowSecond({ setPage }) {
@@ -63,7 +76,13 @@ export function ShowHowSecond({ setPage }) {
           </Flex>
         </Box>
 
-        <MultiplePills gap={20} pb={22} alignItems="center" pills={pills} />
+        <MultiplePills
+          gap={20}
+          pb={22}
+          alignItems="center"
+          pills={pills}
+          setPage={setPage}
+        />
       </FullFlexWithGestures>
     </DefaultLayout>
   );
