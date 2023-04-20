@@ -12,9 +12,8 @@ import {
 
 import { IoArrowBack } from "react-icons/io5";
 import { FaGoogle } from "react-icons/fa";
-import { supabase, useAuth } from "@services/auth";
+import { useAuth } from "@services/auth";
 import { useForm } from "react-hook-form";
-import { useState } from "react";
 
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -25,7 +24,13 @@ const signInUserFormSchema = z.object({
     .nonempty("O e-mail é obrigatório")
     .email("Formato de e-mail inválido")
     .toLowerCase(),
-  password: z.string().min(6, "A senha deve ter no mínimo 6 caracteres"),
+  password: z
+    .string()
+    .min(8, "A senha deve ter pelo menos 8 caracteres.")
+    .regex(
+      /^(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()_+])(?!.*\s).{8,}$/,
+      "A senha deve conter pelo menos uma letra maiúscula, um dígito e um caractere especial"
+    ),
 });
 
 type SignInUserForm = z.infer<z.ZodRequired<typeof signInUserFormSchema>>;
@@ -130,6 +135,7 @@ export function SignIn({ setPage }) {
               fontSize="sm"
               fontWeight="regular"
               alignSelf="flex-end"
+              mt={errors.password ? "5" : "1"}
               onClick={handleResetPassword}
             >
               Forgot Password
