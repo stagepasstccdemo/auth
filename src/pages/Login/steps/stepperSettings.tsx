@@ -11,40 +11,31 @@ import {
 
 interface StepperProps {
   setPage?: (page: string) => void;
-  isFirstVisit?: boolean;
 }
 
-export const isFirstAccessComponents = ({
-  setPage,
-  isFirstVisit,
-}: StepperProps) => {
-  return isFirstVisit
-    ? [
-        {
-          name: "ShowHowFirst",
-          component: <ShowHowFirst setPage={setPage} />,
-        },
-        {
-          name: "ShowHowSecond",
-          component: <ShowHowSecond setPage={setPage} />,
-        },
-        {
-          name: "ShowHowThird",
-          component: <ShowHowThird setPage={setPage} />,
-        },
-      ]
-    : [];
+export const isFirstAccessComponents = ({ setPage }: StepperProps) => {
+  return [
+    {
+      name: "ShowHowFirst",
+      component: <ShowHowFirst setPage={setPage} />,
+    },
+    {
+      name: "ShowHowSecond",
+      component: <ShowHowSecond setPage={setPage} />,
+    },
+    {
+      name: "ShowHowThird",
+      component: <ShowHowThird setPage={setPage} />,
+    },
+  ];
 };
 
-export const getStepperComponents = ({
-  setPage,
-  isFirstVisit,
-}: StepperProps) => [
+export const getStepperComponents = ({ setPage }: StepperProps) => [
   {
     name: "SplashScreen",
     component: <SplashScreen setPage={setPage} />,
   },
-  ...isFirstAccessComponents({ setPage, isFirstVisit }),
+  ...isFirstAccessComponents({ setPage }),
   {
     name: "ChoiceSelection",
     component: <ChoiceSelection setPage={setPage} />,

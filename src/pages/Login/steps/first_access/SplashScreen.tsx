@@ -8,17 +8,19 @@ import {
 } from "@stagepass/osiris-ui";
 
 import { useEffect } from "react";
-
+import { useCookies } from "@hooks/useCookies";
 import LogoImg from "@assets/logo.png";
 
 export function SplashScreen({ setPage }) {
-  useEffect(() => {
-    const timeoutId = setTimeout(() => {
-      setPage("SignIn");
-    }, 2500);
+  const { checkCookie, setCookie } = useCookies();
 
-    return () => clearTimeout(timeoutId);
-  }, [setPage]);
+  useEffect(() => {
+    const hasCookies = checkCookie("@stagepass:not-first-access");
+
+    setTimeout(() => {
+      return !hasCookies ? setPage("ShowHowFirst") : setPage("ChoiceSelection");
+    }, 2000);
+  }, [checkCookie, setCookie, setPage]);
 
   return (
     <DefaultLayout>

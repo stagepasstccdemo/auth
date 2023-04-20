@@ -11,6 +11,7 @@ import {
 import EventsImage from "@assets/events-image.png";
 import { useSwipeGestures } from "@hooks/useSwipeable";
 import { useEffect } from "react";
+import { useCookies } from "@hooks/useCookies";
 import { setPageProps } from "../types";
 
 const pills = [
@@ -32,9 +33,14 @@ const pills = [
 ];
 
 export function ShowHowThird({ setPage }) {
+  const { setCookie } = useCookies();
+
   const { swipeGestures } = useSwipeGestures({
     handler: {
-      left: () => setPage("ChoiceSelection"),
+      left: () => {
+        setPage("ChoiceSelection");
+        setCookie("@stagepass:not-first-access", true, 365);
+      },
       right: () => setPage("ShowHowSecond"),
     },
     swipeDuration: 800,
@@ -43,12 +49,13 @@ export function ShowHowThird({ setPage }) {
   useEffect(() => {
     setTimeout(() => {
       setPage("ChoiceSelection");
+      setCookie("@stagepass:not-first-access", true, 365);
     }, 6000);
 
     return () => {
       clearTimeout();
     };
-  }, [setPage]);
+  }, [setPage, setCookie]);
 
   return (
     <DefaultLayout>

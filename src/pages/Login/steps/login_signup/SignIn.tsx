@@ -12,7 +12,7 @@ import {
 
 import { IoArrowBack } from "react-icons/io5";
 import { FaGoogle } from "react-icons/fa";
-import { useAuth } from "@services/auth";
+import { supabase, useAuth } from "@services/auth";
 import { useForm } from "react-hook-form";
 import { useState } from "react";
 
@@ -31,7 +31,7 @@ const signInUserFormSchema = z.object({
 type SignInUserForm = z.infer<z.ZodRequired<typeof signInUserFormSchema>>;
 
 export function SignIn({ setPage }) {
-  const { signInWithGoogle } = useAuth();
+  const { signInWithGoogle, signInWithPassword, userSession } = useAuth();
 
   const handleSignUp = () => {
     setPage("SignUp");
@@ -45,7 +45,6 @@ export function SignIn({ setPage }) {
     setPage("ResetPassword");
   };
 
-  const [output, setOutput] = useState("");
   const {
     register,
     handleSubmit,
@@ -54,8 +53,8 @@ export function SignIn({ setPage }) {
     resolver: zodResolver(signInUserFormSchema),
   });
 
-  const signInUser = (data: any) => {
-    setOutput(JSON.stringify(data, null, 2));
+  const signInUser = async (formData: SignInUserForm) => {
+    await signInWithPassword(formData.email, formData.password);
   };
 
   return (
@@ -175,15 +174,6 @@ export function SignIn({ setPage }) {
           </Box>
         </Box>
       </form>
-      {output && (
-        <pre
-          style={{
-            color: "white",
-          }}
-        >
-          {output}
-        </pre>
-      )}
     </DefaultLayout>
   );
 }
