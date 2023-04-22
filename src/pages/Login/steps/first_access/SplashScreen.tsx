@@ -1,4 +1,3 @@
-// @ts-nocheck
 import {
   DefaultLayout,
   Center,
@@ -40,7 +39,7 @@ export function SplashScreen({ setPage }) {
           alignItems="center"
           justifyContent="center"
         >
-          <Logo src={LogoImg} fall borderRadius="60px" boxSize="20rem" />
+          <Logo src={LogoImg} borderRadius="60px" boxSize="20rem" />
           <Spinner boxSize={40} thickness="4px" speed="0.60s" color="white" />
         </Flex>
       </Center>

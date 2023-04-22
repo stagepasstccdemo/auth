@@ -1,4 +1,3 @@
-// @ts-nocheck
 import {
   DefaultLayout,
   Box,
@@ -45,6 +44,7 @@ export function ShowHowFirst({ setPage }) {
 
   return (
     <DefaultLayout>
+      {/** @ts-ignore */}
       <FullFlexWithGestures swipe={swipeGestures}>
         <Box px="1.25rem" py="3.25rem">
           <TextWithImage

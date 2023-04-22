@@ -1,3 +1,4 @@
+// TODO: Fix FormFields.Input and FormFields.Submit props and Redirect;
 // @ts-nocheck
 import {
   DefaultLayout,
@@ -13,7 +14,7 @@ import {
   useToast,
 } from "@stagepass/osiris-ui";
 
-import { FaGoogle, IoArrowBack } from "@icons";
+import { FaGoogle, IoArrowBack } from "@assets/icons";
 
 import { useState } from "react";
 import { useAuth } from "@hooks/useAuth";

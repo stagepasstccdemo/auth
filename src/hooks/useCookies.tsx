@@ -1,5 +1,5 @@
 export const useCookies = () => {
-  const setCookie = (name: string, value: string, days: number) => {
+  const setCookie = (name: string, value: boolean, days: number) => {
     const expires = new Date(Date.now() + days * 864e5).toUTCString();
     document.cookie = `${name}=${encodeURIComponent(
       value

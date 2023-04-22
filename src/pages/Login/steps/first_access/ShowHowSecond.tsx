@@ -1,4 +1,3 @@
-// @ts-nocheck
 import {
   Box,
   DefaultLayout,
@@ -54,8 +53,9 @@ export function ShowHowSecond({ setPage }) {
   return (
     <DefaultLayout>
       <FullFlexWithGestures
-        justifyContent="space-between"
+        // @ts-ignore
         swipe={swipeGestures}
+        justifyContent="space-between"
       >
         <Box px="2.5rem" py="3.25rem" pb="0">
           <Heading
@@ -73,12 +73,7 @@ export function ShowHowSecond({ setPage }) {
             badges={badges}
           />
 
-          <Flex
-            alignItems="center"
-            pt="3.25rem"
-            pl="2.5rem"
-            textAlign="flex-start"
-          >
+          <Flex alignItems="center" pt="3.25rem" pl="2.5rem">
             <Heading as="h2" color="gray.100" text="and a whole lot more..." />
           </Flex>
         </Box>

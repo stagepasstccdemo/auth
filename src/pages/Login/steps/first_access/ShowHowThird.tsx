@@ -1,4 +1,3 @@
-// @ts-nocheck
 import {
   Box,
   DefaultLayout,
@@ -47,20 +46,19 @@ export function ShowHowThird({ setPage }) {
   });
 
   useEffect(() => {
-    setTimeout(() => {
+    const timeoutId = setTimeout(() => {
       setPage("AuthenticationMethod");
       setCookie("@stagepass:not-first-access", true, 365);
     }, 6000);
 
-    return () => {
-      clearTimeout();
-    };
+    return () => clearTimeout(timeoutId);
   }, [setPage, setCookie]);
 
   return (
     <DefaultLayout>
       <FullFlexWithGestures
         justifyContent="space-between"
+        // @ts-ignore
         swipe={swipeGestures}
       >
         <Box px="2.5rem" py="3.25rem" pb="0">

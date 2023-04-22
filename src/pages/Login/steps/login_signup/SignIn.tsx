@@ -13,7 +13,7 @@ import {
   useToast,
 } from "@stagepass/osiris-ui";
 
-import { FaGoogle, IoArrowBack } from "@icons";
+import { FaGoogle, IoArrowBack } from "@assets/icons";
 
 import { useState } from "react";
 import { useAuth } from "@hooks/useAuth";

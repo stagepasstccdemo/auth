@@ -1,4 +1,3 @@
-// @ts-nocheck
 import {
   Box,
   DefaultLayout,
@@ -7,7 +6,7 @@ import {
   Button,
 } from "@stagepass/osiris-ui";
 
-import { IoTicketOutline } from "@icons";
+import { IoTicketOutline } from "@assets/icons";
 import { navigateToUrl } from "single-spa";
 
 export function AuthenticationMethod({ setPage }) {
