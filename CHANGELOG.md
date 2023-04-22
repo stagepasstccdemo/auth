@@ -1,3 +1,28 @@
+# [1.8.0](https://github.com/stagePass/auth/compare/v1.7.0...v1.8.0) (2023-04-22)
+
+
+### Bug Fixes
+
+* setPage props spreading ([addd1ff](https://github.com/stagePass/auth/commit/addd1ffe9cfbd93363e3e3aae418ed57fbc09b96))
+* style and navigation errors ([b3f78dc](https://github.com/stagePass/auth/commit/b3f78dc1a1f3c9f980b51db1d335b2789cb4d8c7))
+
+
+### Features
+
+* apply mt to resetPassword when password form has errors ([d6df399](https://github.com/stagePass/auth/commit/d6df3997ade0558f8be08dfb00009c24ad947c9e))
+* checks if user already exists on signUp page and also fix some minor issues in navigation ([cd0b311](https://github.com/stagePass/auth/commit/cd0b3110d7a20c9c0bbbab91e7ce16d44807c878))
+* create signIn | signUp and resetPassword models ([d6c3787](https://github.com/stagePass/auth/commit/d6c3787006e57d0dd33ae58553efc8238a5c9058))
+* creates form validation and login authentication with supabase | set cookies for first access ([cdca50a](https://github.com/stagePass/auth/commit/cdca50ab8763878b8d058c6d7f384806c667e101))
+* creates icons folder for exporting all used icons on app ([43712d0](https://github.com/stagePass/auth/commit/43712d0819a1e2f15777535ad49a0d74b479b2ec))
+* creates schemas | useCases for our forms and also refactor signIn page ([9c04834](https://github.com/stagePass/auth/commit/9c04834f5955382eab02c7103892e41e388c211f))
+* fix onClick actions on showHow toggles ([94a04fd](https://github.com/stagePass/auth/commit/94a04fd6ccdc4d63d50b9b0134598b40bb2f879e))
+* redirect when user is authenticated ([5698645](https://github.com/stagePass/auth/commit/56986459ebb19b17bf0789aeeef71ba2547da27f))
+* refactoring some pages that were broken and also set handlers for form ([eb68163](https://github.com/stagePass/auth/commit/eb6816394d96f39729851e81a938bd7e5fc23dea))
+* rename some assets and setup webpack dotEnv plugin ([6415385](https://github.com/stagePass/auth/commit/6415385af8a0592dc914c4be4cdff27be7a00130))
+* setup hot-toast ([da1c803](https://github.com/stagePass/auth/commit/da1c803ecebc6def6f9f77f57c34a0e2f9ed89b3))
+* setup react-hook-form and zod on signIn form ([41f26f9](https://github.com/stagePass/auth/commit/41f26f940d35b62b6cdb3a5d4a9ce30dee180859))
+* update dotenv on sentry ([aafd966](https://github.com/stagePass/auth/commit/aafd9661e78c123619b3b5da053eccb7559c15a3))
+
 # [1.7.0](https://github.com/stagePass/auth/compare/v1.6.1...v1.7.0) (2023-04-17)
 
 
