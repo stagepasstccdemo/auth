@@ -5,18 +5,22 @@ import {
   Flex,
   Heading,
   Button,
-  Text,
 } from "@stagepass/osiris-ui";
 
 import { IoTicketOutline } from "@icons";
+import { navigateToUrl } from "single-spa";
 
 export function AuthenticationMethod({ setPage }) {
   const handleSignIn = () => {
-    setPage("SignIn");
+    return setPage ? setPage("SignIn") : navigateToUrl("/signIn");
   };
 
   const handleSignUp = () => {
-    setPage("SignUp");
+    return setPage ? setPage("SignUp") : navigateToUrl("/signUp");
+  };
+
+  const handleExplore = () => {
+    navigateToUrl("/events");
   };
 
   return (
@@ -60,12 +64,9 @@ export function AuthenticationMethod({ setPage }) {
             signup
           </Button>
         </Flex>
-        <Text
-          text="I just wanna explore"
-          color="gray.100"
-          textAlign="center"
-          mb="1.375rem"
-        />
+        <Button bgColor="transparent" color="gray.100" onClick={handleExplore}>
+          I just wanna explore
+        </Button>
       </Flex>
     </DefaultLayout>
   );

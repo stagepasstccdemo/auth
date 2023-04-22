@@ -6,10 +6,10 @@ export type SignInUserFormType = z.infer<typeof signInUserFormSchema>;
 export const signInUserFormSchema = z.object({
   email: z
     .string()
-    .nonempty("O e-mail é obrigatório")
-    .email("Formato de e-mail inválido")
+    .nonempty("E-mail is required")
+    .email("E-mail format is invalid")
     .toLowerCase(),
-  password: z.string().min(6, "A senha deve ter pelo menos 6 caracteres."),
+  password: z.string().min(6, "Password must be at least 6 characters"),
 });
 
 export const signInUserResolver = zodResolver(signInUserFormSchema);

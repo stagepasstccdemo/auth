@@ -20,32 +20,33 @@ import { useAuth } from "@hooks/useAuth";
 
 import { useForm } from "react-hook-form";
 
-import {
-  SignInUserFormType,
-  signInUserResolver,
-} from "@schemas/useCases/signInUserFormSchema";
 import { useNavigate } from "react-router-dom";
+import {
+  signUpUserResolver,
+  SignUpUserType,
+} from "@schemas/useCases/signUpUserFormSchema";
 
 export function SignUp({ setPage }) {
   const [loading, setLoading] = useState(false);
-  const { signInWithGoogle, signUp } = useAuth();
-  const toast = useToast();
-
   const navigate = useNavigate();
+  const toast = useToast();
+  const { signInWithGoogle, signUp } = useAuth();
 
   const handleGoBack = () => {
-    setPage("AuthenticationMethod");
+    return setPage
+      ? setPage("AuthenticationMethod")
+      : navigate("/authenticationMethod");
   };
 
   const {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<SignInUserFormType>({
-    resolver: signInUserResolver,
+  } = useForm<SignUpUserType>({
+    resolver: signUpUserResolver,
   });
 
-  const signInUser = async (formData: SignInUserFormType) => {
+  const signUpUser = async (formData: SignUpUserType) => {
     setLoading(true);
     const { error } = await signUp(formData.email, formData.password);
 
@@ -87,7 +88,7 @@ export function SignUp({ setPage }) {
         <Heading as="h2" text="Sign Up" mb="5" color="gray.100" />
       </Flex>
 
-      <Form onSubmit={handleSubmit(signInUser)}>
+      <Form onSubmit={handleSubmit(signUpUser)}>
         <Flex direction="column" gap="20">
           <FormFields.Input
             text="Enter your email"

@@ -20,10 +20,6 @@ import { useAuth } from "@hooks/useAuth";
 
 import { useForm } from "react-hook-form";
 
-import {
-  SignInUserFormType,
-  signInUserResolver,
-} from "@schemas/useCases/signInUserFormSchema";
 import { useNavigate } from "react-router-dom";
 import {
   resetPasswordResolver,
@@ -32,10 +28,9 @@ import {
 
 export function ResetPassword({ setPage }) {
   const [loading, setLoading] = useState(false);
-  const { signInWithGoogle, sendResetPasswordEmail } = useAuth();
-  const toast = useToast();
-
   const navigate = useNavigate();
+  const toast = useToast();
+  const { signInWithGoogle, sendResetPasswordEmail } = useAuth();
 
   const handleSignUp = () => {
     setPage("SignUp");
@@ -53,7 +48,7 @@ export function ResetPassword({ setPage }) {
     resolver: resetPasswordResolver,
   });
 
-  const signInUser = async (formData: ResetPasswordType) => {
+  const resetUserAccountPassword = async (formData: ResetPasswordType) => {
     setLoading(true);
     const { error } = await sendResetPasswordEmail(formData.email);
     setLoading(false);
@@ -102,7 +97,7 @@ export function ResetPassword({ setPage }) {
         <Heading as="h2" text="Forgot your pasword ?" mb="5" color="gray.100" />
       </Flex>
 
-      <Form onSubmit={handleSubmit(signInUser)}>
+      <Form onSubmit={handleSubmit(resetUserAccountPassword)}>
         <Flex direction="column" gap="20">
           <FormFields.Input
             text="Enter your email"

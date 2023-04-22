@@ -6,8 +6,8 @@ export type ResetPasswordType = z.infer<typeof resetPasswordFormSchema>;
 export const resetPasswordFormSchema = z.object({
   email: z
     .string()
-    .nonempty("O e-mail é obrigatório")
-    .email("Formato de e-mail inválido")
+    .nonempty("E-mail is required")
+    .email("E-mail format is invalid")
     .toLowerCase(),
 });
 

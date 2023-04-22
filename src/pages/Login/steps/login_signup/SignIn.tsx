@@ -24,22 +24,26 @@ import {
   SignInUserFormType,
   signInUserResolver,
 } from "@schemas/useCases/signInUserFormSchema";
+import { useNavigate } from "react-router-dom";
 
 export function SignIn({ setPage }) {
   const [loading, setLoading] = useState(false);
-  const { signInWithGoogle, signInWithPassword } = useAuth();
+  const navigate = useNavigate();
   const toast = useToast();
+  const { signInWithGoogle, signInWithPassword } = useAuth();
 
   const handleSignUp = () => {
     setPage("SignUp");
   };
 
   const handleGoBack = () => {
-    setPage("AuthenticationMethod");
+    return setPage
+      ? setPage("AuthenticationMethod")
+      : navigate("/authenticationMethod");
   };
 
   const handleResetPassword = () => {
-    setPage("ResetPassword");
+    return setPage ? setPage("ResetPassword") : navigate("/resetPassword");
   };
 
   const {

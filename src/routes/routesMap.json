@@ -14,5 +14,9 @@
   {
     "element": "ResetPassword",
     "path": "/resetPassword"  
+  },
+  {
+    "element": "AuthenticationMethod",
+    "path": "/authenticationMethod"
   }
 ]
