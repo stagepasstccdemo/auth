@@ -24,7 +24,7 @@ export const useAuth = () => {
     navigateToUrl("/");
   };
 
-  if (userSession) {
+  if (userSession && userSession.user !== null) {
     navigateToUrl("/events");
   }
 

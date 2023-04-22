@@ -9,6 +9,8 @@ import {
   Divider,
   Form,
   FormFields,
+  Toaster,
+  useToast,
 } from "@stagepass/osiris-ui";
 
 import { FaGoogle, IoArrowBack } from "@icons";
@@ -26,6 +28,7 @@ import {
 export function SignIn({ setPage }) {
   const [loading, setLoading] = useState(false);
   const { signInWithGoogle, signInWithPassword } = useAuth();
+  const toast = useToast();
 
   const handleSignUp = () => {
     setPage("SignUp");
@@ -51,6 +54,13 @@ export function SignIn({ setPage }) {
     setLoading(true);
     await signInWithPassword(formData.email, formData.password);
     setLoading(false);
+
+    if (errors) {
+      toast.error("Invalid email or password", {
+        position: "top-center",
+        duration: 4000,
+      });
+    }
   };
 
   return (
@@ -120,6 +130,7 @@ export function SignIn({ setPage }) {
           </Button>
         </Flex>
       </Form>
+      <Toaster />
     </DefaultLayout>
   );
 }
