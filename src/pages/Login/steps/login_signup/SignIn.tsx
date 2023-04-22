@@ -13,10 +13,10 @@ import {
 
 import { FaGoogle, IoArrowBack } from "@icons";
 
-import { useAuth } from "@hooks/useAuth";
-import { useForm } from "react-hook-form";
-
 import { useState } from "react";
+import { useAuth } from "@hooks/useAuth";
+
+import { useForm } from "react-hook-form";
 
 import {
   SignInUserFormType,

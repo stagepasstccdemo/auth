@@ -1,4 +1,4 @@
-export function ResetPassword({ setPage }) {
+export function ResetPassword() {
   return (
     <div>
       <h1>Reset Password</h1>
