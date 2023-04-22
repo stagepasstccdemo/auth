@@ -52,11 +52,15 @@ export function SignIn({ setPage }) {
 
   const signInUser = async (formData: SignInUserFormType) => {
     setLoading(true);
-    await signInWithPassword(formData.email, formData.password);
+    const { error } = await signInWithPassword(
+      formData.email,
+      formData.password
+    );
+
     setLoading(false);
 
-    if (errors) {
-      toast.error("Invalid email or password", {
+    if (error) {
+      toast.error(error.message, {
         position: "top-center",
         duration: 4000,
       });
@@ -65,7 +69,7 @@ export function SignIn({ setPage }) {
 
   return (
     <DefaultLayout>
-      <Flex direction="column" px="1.25rem" py="2rem" gap="5" padding>
+      <Flex direction="column" px="1.25rem" py="2rem" gap="5">
         <Box display="flex" justifyContent="space-between" alignItems="center">
           <IconButton
             h="3rem"

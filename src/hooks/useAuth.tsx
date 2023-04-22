@@ -19,6 +19,16 @@ export const useAuth = () => {
     return () => subscription.unsubscribe();
   }, []);
 
+  const signUp = async (email: string, password: string) => {
+    const { data, error } = await supabase.auth.signUp({
+      email,
+      password,
+    });
+
+    setUserSession(data);
+    return { data, error };
+  };
+
   const signOut = async () => {
     await supabase.auth.signOut();
     navigateToUrl("/");
@@ -52,10 +62,18 @@ export const useAuth = () => {
     return { data, error };
   };
 
+  const sendResetPasswordEmail = async (email: string) => {
+    const { data, error } = await supabase.auth.resetPasswordForEmail(email);
+
+    return { data, error };
+  };
+
   return {
     userSession,
     signOut,
+    signUp,
     signInWithGoogle,
     signInWithPassword,
+    sendResetPasswordEmail,
   };
 };
