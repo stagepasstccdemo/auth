@@ -14,6 +14,7 @@
       "@services/*": ["src/services/*"],
       "@routes/*": ["src/routes/*"], 
       "@util/*": ["src/util/*"],
+      "@schemas/*": ["src/schemas/*"],
     }
   },
   "files": ["src/stagepass-app-auth.tsx"],
