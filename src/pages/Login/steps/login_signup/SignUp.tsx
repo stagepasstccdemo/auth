@@ -15,12 +15,11 @@ import {
 
 import { FaGoogle, IoArrowBack } from "@icons";
 
+import { useForm } from "react-hook-form";
 import { useState } from "react";
 import { useAuth } from "@hooks/useAuth";
-
-import { useForm } from "react-hook-form";
-
 import { useNavigate } from "react-router-dom";
+
 import {
   signUpUserResolver,
   SignUpUserType,
@@ -28,9 +27,9 @@ import {
 
 export function SignUp({ setPage }) {
   const [loading, setLoading] = useState(false);
+  const { signInWithGoogle, signUp } = useAuth();
   const navigate = useNavigate();
   const toast = useToast();
-  const { signInWithGoogle, signUp } = useAuth();
 
   const handleGoBack = () => {
     return setPage

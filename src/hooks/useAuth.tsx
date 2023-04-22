@@ -19,7 +19,27 @@ export const useAuth = () => {
     return () => subscription.unsubscribe();
   }, []);
 
+  const checkIfUserAlreadyExists = async (email: string) => {
+    const { data: users } = await supabase
+      .from("users")
+      .select("*")
+      .eq("email", email);
+
+    return users && users.length > 0;
+  };
+
   const signUp = async (email: string, password: string) => {
+    const userAlreadyExists = await checkIfUserAlreadyExists(email);
+
+    if (userAlreadyExists) {
+      return {
+        data: null,
+        error: {
+          message: "User already exists - please sign in instead",
+        },
+      };
+    }
+
     const { data, error } = await supabase.auth.signUp({
       email,
       password,
@@ -64,7 +84,6 @@ export const useAuth = () => {
 
   const sendResetPasswordEmail = async (email: string) => {
     const { data, error } = await supabase.auth.resetPasswordForEmail(email);
-
     return { data, error };
   };
 

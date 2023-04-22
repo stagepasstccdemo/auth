@@ -28,12 +28,12 @@ import { useNavigate } from "react-router-dom";
 
 export function SignIn({ setPage }) {
   const [loading, setLoading] = useState(false);
+  const { signInWithGoogle, signInWithPassword } = useAuth();
   const navigate = useNavigate();
   const toast = useToast();
-  const { signInWithGoogle, signInWithPassword } = useAuth();
 
   const handleSignUp = () => {
-    setPage("SignUp");
+    return setPage ? setPage("SignUp") : navigate("/signUp");
   };
 
   const handleGoBack = () => {
@@ -66,7 +66,7 @@ export function SignIn({ setPage }) {
     if (error) {
       toast.error(error.message, {
         position: "top-center",
-        duration: 4000,
+        duration: 5000,
       });
     }
   };
