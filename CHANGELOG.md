@@ -1,3 +1,10 @@
+## [1.8.2](https://github.com/stagePass/auth/compare/v1.8.1...v1.8.2) (2023-04-22)
+
+
+### Bug Fixes
+
+* setup .env on build ([a7e556d](https://github.com/stagePass/auth/commit/a7e556d55a3d918167bc7b3f6771a89f85f15355))
+
 ## [1.8.1](https://github.com/stagePass/auth/compare/v1.8.0...v1.8.1) (2023-04-22)
 
 
