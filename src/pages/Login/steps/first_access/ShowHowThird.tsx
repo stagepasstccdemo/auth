@@ -63,7 +63,7 @@ export function ShowHowThird({ setPage }) {
         justifyContent="space-between"
         swipe={swipeGestures}
       >
-        <Box px="40" py="52" pb="0">
+        <Box px="2.5rem" py="3.25rem" pb="0">
           <Heading
             as="h1"
             color="gray.100"
@@ -81,9 +81,9 @@ export function ShowHowThird({ setPage }) {
         </Box>
 
         <MultiplePills
+          alignItems="center"
           gap={20}
           pb={22}
-          alignItems="center"
           pills={pills}
           setPage={setPage}
         />

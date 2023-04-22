@@ -17,6 +17,7 @@ import { useForm } from "react-hook-form";
 
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { useState } from "react";
 
 const signInUserFormSchema = z.object({
   email: z
@@ -30,7 +31,8 @@ const signInUserFormSchema = z.object({
 type SignInUserForm = z.infer<z.ZodRequired<typeof signInUserFormSchema>>;
 
 export function SignIn({ setPage }) {
-  const { signInWithGoogle, signInWithPassword, userSession } = useAuth();
+  const [loading, setLoading] = useState(false);
+  const { signInWithGoogle, signInWithPassword } = useAuth();
 
   const handleSignUp = () => {
     setPage("SignUp");
@@ -53,40 +55,38 @@ export function SignIn({ setPage }) {
   });
 
   const signInUser = async (formData: SignInUserForm) => {
+    setLoading(true);
     await signInWithPassword(formData.email, formData.password);
+    setLoading(false);
   };
 
   return (
     <DefaultLayout>
-      <form onSubmit={handleSubmit(signInUser)}>
-        <Flex direction="column" px="20" py="32" gap="5">
-          <Box
-            display="flex"
-            justifyContent="space-between"
-            alignItems="center"
+      <Flex direction="column" px="1.25rem" py="2rem" gap="5" padding>
+        <Box display="flex" justifyContent="space-between" alignItems="center">
+          <IconButton
+            h="3rem"
+            w="3rem"
+            rounded="xl"
+            bgColor="gray.700"
+            icon={<IoArrowBack color="white" size={26} />}
+            onClick={handleGoBack}
+          />
+          <Button
+            variant="link"
+            color="white"
+            fontWeight="regular"
+            onClick={handleSignUp}
           >
-            <IconButton
-              h="3rem"
-              w="3rem"
-              rounded="xl"
-              bgColor="gray.700"
-              icon={<IoArrowBack color="white" size={26} />}
-              onClick={handleGoBack}
-            />
-            <Button
-              variant="link"
-              color="white"
-              fontWeight="regular"
-              onClick={handleSignUp}
-            >
-              SignUp
-            </Button>
-          </Box>
+            SignUp
+          </Button>
+        </Box>
+        <Heading as="h2" text="Sign In" mb="5" color="gray.100" />
+      </Flex>
 
-          <Heading as="h2" text="Sign In" mb="5" color="gray.100" />
-        </Flex>
+      <form onSubmit={handleSubmit(signInUser)}>
         <Box
-          height="78vh"
+          height="77vh"
           bgColor="white"
           borderTopRadius={40}
           p={20}
@@ -97,14 +97,19 @@ export function SignIn({ setPage }) {
           <Flex direction="column" gap="20">
             <InputWithLabel
               text="Enter your email"
-              gap="5"
               placeholder="john-doe@mail.com"
+              gap="5"
               bgColor="gray.700"
               color="gray.100"
               rounded="xl"
               focusBorderColor="os-primary.100"
               py={6}
+              maxWidth="100%"
               name="email"
+              _hover={{
+                borderColor: "os-primary.100",
+                transition: "0.1s ease-all",
+              }}
               register={register}
               error={errors.email}
             />
@@ -120,6 +125,10 @@ export function SignIn({ setPage }) {
               type="password"
               py={6}
               name="password"
+              _hover={{
+                borderColor: "os-primary.100",
+                transition: "0.1s ease-all",
+              }}
               register={register}
               error={errors.password}
             />
@@ -136,8 +145,9 @@ export function SignIn({ setPage }) {
             </Button>
           </Flex>
 
-          <Box>
+          <Flex flexDirection="column">
             <Button
+              isLoading={loading}
               bgColor="gray.700"
               color="gray.100"
               rounded="xl"
@@ -171,7 +181,7 @@ export function SignIn({ setPage }) {
             >
               sign in with google
             </Button>
-          </Box>
+          </Flex>
         </Box>
       </form>
     </DefaultLayout>

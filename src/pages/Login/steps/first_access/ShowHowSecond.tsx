@@ -57,7 +57,7 @@ export function ShowHowSecond({ setPage }) {
         justifyContent="space-between"
         swipe={swipeGestures}
       >
-        <Box px="40" py="52" pb="0">
+        <Box px="2.5rem" py="3.25rem" pb="0">
           <Heading
             as="h1"
             color="gray.100"
@@ -65,13 +65,20 @@ export function ShowHowSecond({ setPage }) {
           />
 
           <MultipleBadges
+            maxWidth={{ base: "100%", lg: "40%" }}
             direction="column"
             alignItems="start"
-            pt="20"
-            gap="20"
+            pt="1.25rem"
+            gap="1.25rem"
             badges={badges}
           />
-          <Flex alignItems="center" pt="40" pl="20" textAlign="flex-start">
+
+          <Flex
+            alignItems="center"
+            pt="3.25rem"
+            pl="2.5rem"
+            textAlign="flex-start"
+          >
             <Heading as="h2" color="gray.100" text="and a whole lot more..." />
           </Flex>
         </Box>

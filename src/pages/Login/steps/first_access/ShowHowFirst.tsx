@@ -7,13 +7,13 @@ import {
   FullFlexWithGestures,
   TextWithImage,
   MultiplePills,
-  Skeleton,
 } from "@stagepass/osiris-ui";
 
 import { useSwipeGestures } from "@hooks/useSwipeable";
 
 import TicketsImg from "@assets/showHowFirstImage.png";
 import LogoCursiveImg from "@assets/fullLogo.png";
+
 import { setPageProps } from "../types";
 
 export function ShowHowFirst({ setPage }) {
@@ -46,13 +46,13 @@ export function ShowHowFirst({ setPage }) {
   return (
     <DefaultLayout>
       <FullFlexWithGestures swipe={swipeGestures}>
-        <Box px="20" py="52">
+        <Box px="1.25rem" py="3.25rem">
           <TextWithImage
             as="h1"
             color="gray.100"
             text="Welcome to"
             alt="StagePass"
-            width="280px"
+            width={["280px", "380px"]}
             src={LogoCursiveImg}
           />
         </Box>
@@ -60,13 +60,13 @@ export function ShowHowFirst({ setPage }) {
         <Box ml="6rem">
           <Text
             color="gray.100"
-            fontSize="xl"
-            maxWidth="14rem"
+            fontSize={["xl", "2xl", "3xl"]}
+            maxWidth={["14rem", "20rem", "26rem"]}
             text="Get tickets for everything you ll ever need"
           />
         </Box>
 
-        <Box position="relative" width="100vw" height="100vh">
+        <Box position="relative" width="100%" height="100vh">
           <Box
             position="absolute"
             top="48%"
@@ -78,11 +78,11 @@ export function ShowHowFirst({ setPage }) {
           </Box>
         </Box>
         <MultiplePills
+          alignItems="center"
           gap={20}
           pb={22}
-          alignItems="center"
-          pills={pills}
           zIndex={1}
+          pills={pills}
           setPage={setPage}
         />
       </FullFlexWithGestures>
