@@ -8,7 +8,7 @@ import {
   MultiplePills,
 } from "@stagepass/osiris-ui";
 
-import EventsImage from "@assets/events-image.png";
+import EventsImage from "@assets/showHowThirdImage.png";
 import { useSwipeGestures } from "@hooks/useSwipeable";
 import { useEffect } from "react";
 import { useCookies } from "@hooks/useCookies";

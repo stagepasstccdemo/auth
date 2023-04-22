@@ -24,13 +24,7 @@ const signInUserFormSchema = z.object({
     .nonempty("O e-mail é obrigatório")
     .email("Formato de e-mail inválido")
     .toLowerCase(),
-  password: z
-    .string()
-    .min(8, "A senha deve ter pelo menos 8 caracteres.")
-    .regex(
-      /^(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()_+])(?!.*\s).{8,}$/,
-      "A senha deve conter pelo menos uma letra maiúscula, um dígito e um caractere especial"
-    ),
+  password: z.string().min(6, "A senha deve ter pelo menos 6 caracteres."),
 });
 
 type SignInUserForm = z.infer<z.ZodRequired<typeof signInUserFormSchema>>;
