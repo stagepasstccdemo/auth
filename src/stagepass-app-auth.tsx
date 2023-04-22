@@ -29,4 +29,4 @@ const lifecycles = singleSpaReact({
 
 export const { bootstrap, mount, unmount } = lifecycles;
 
-export { useAuth } from "./services/auth";
+export { useAuth } from "@hooks/useAuth";

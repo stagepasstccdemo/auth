@@ -1,5 +1,6 @@
 import React from "react";
 import { Routes as Switch, Route } from "react-router-dom";
+
 import { lazyRoutes } from "./lazyRoutes";
 import { SplashScreen } from "../pages/Login/steps";
 

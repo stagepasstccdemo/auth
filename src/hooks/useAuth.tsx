@@ -1,11 +1,6 @@
+import { supabase } from "@services/supabase";
 import { useEffect, useState } from "react";
-import { createClient } from "@supabase/supabase-js";
 import { navigateToUrl } from "single-spa";
-
-const SUPABASE_URL = process.env.REACT_APP_SUPABASE_URL;
-const SUPABASE_ANONYMOUS_KEY = process.env.REACT_APP_SUPABASE_ANON_KEY;
-
-export const supabase = createClient(SUPABASE_URL, SUPABASE_ANONYMOUS_KEY);
 
 export const useAuth = () => {
   const [userSession, setUserSession] = useState(null);

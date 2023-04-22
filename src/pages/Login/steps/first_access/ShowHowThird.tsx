@@ -38,7 +38,7 @@ export function ShowHowThird({ setPage }) {
   const { swipeGestures } = useSwipeGestures({
     handler: {
       left: () => {
-        setPage("ChoiceSelection");
+        setPage("AuthenticationMethod");
         setCookie("@stagepass:not-first-access", true, 365);
       },
       right: () => setPage("ShowHowSecond"),
@@ -48,7 +48,7 @@ export function ShowHowThird({ setPage }) {
 
   useEffect(() => {
     setTimeout(() => {
-      setPage("ChoiceSelection");
+      setPage("AuthenticationMethod");
       setCookie("@stagepass:not-first-access", true, 365);
     }, 6000);
 

@@ -1,5 +1,5 @@
 import {
-  ChoiceSelection,
+  AuthenticationMethod,
   SplashScreen,
   ShowHowFirst,
   ShowHowSecond,
@@ -37,8 +37,8 @@ export const getStepperComponents = ({ setPage }: StepperProps) => [
   },
   ...isFirstAccessComponents({ setPage }),
   {
-    name: "ChoiceSelection",
-    component: <ChoiceSelection setPage={setPage} />,
+    name: "AuthenticationMethod",
+    component: <AuthenticationMethod setPage={setPage} />,
   },
   { name: "SignIn", component: <SignIn setPage={setPage} /> },
   { name: "SignUp", component: <SignUp setPage={setPage} /> },

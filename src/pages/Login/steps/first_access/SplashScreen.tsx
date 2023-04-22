@@ -18,7 +18,9 @@ export function SplashScreen({ setPage }) {
     const hasCookies = checkCookie("@stagepass:not-first-access");
 
     setTimeout(() => {
-      return !hasCookies ? setPage("ShowHowFirst") : setPage("ChoiceSelection");
+      return !hasCookies
+        ? setPage("ShowHowFirst")
+        : setPage("AuthenticationMethod");
     }, 2000);
   }, [checkCookie, setCookie, setPage]);
 

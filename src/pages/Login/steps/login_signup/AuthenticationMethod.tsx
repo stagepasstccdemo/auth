@@ -10,7 +10,7 @@ import {
 
 import { IoTicketOutline } from "react-icons/io5";
 
-export function ChoiceSelection({ setPage }) {
+export function AuthenticationMethod({ setPage }) {
   const handleSignIn = () => {
     setPage("SignIn");
   };
