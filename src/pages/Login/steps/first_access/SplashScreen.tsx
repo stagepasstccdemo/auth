@@ -7,22 +7,29 @@ import {
   Spinner,
 } from "@stagepass/osiris-ui";
 
+import LogoImg from "@assets/logo.png";
+
 import { useEffect } from "react";
 import { useCookies } from "@hooks/useCookies";
-import LogoImg from "@assets/logo.png";
+import { useAuth } from "@hooks/useAuth";
+import { navigateToUrl } from "single-spa";
 
 export function SplashScreen({ setPage }) {
   const { checkCookie, setCookie } = useCookies();
+  const { userSession } = useAuth();
 
   useEffect(() => {
     const hasCookies = checkCookie("@stagepass:not-first-access");
-
     setTimeout(() => {
+      if (userSession) {
+        navigateToUrl("/events");
+      }
+
       return !hasCookies
         ? setPage("ShowHowFirst")
         : setPage("AuthenticationMethod");
     }, 2000);
-  }, [checkCookie, setCookie, setPage]);
+  }, [checkCookie, setCookie, setPage, userSession]);
 
   return (
     <DefaultLayout>
