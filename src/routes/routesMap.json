@@ -1,9 +1,5 @@
 [
   {
-    "element": "Teste",
-    "path": "/teste"
-  },
-  {
     "element": "Login",
     "path": "/"
   },
@@ -18,5 +14,9 @@
   {
     "element": "ResetPassword",
     "path": "/resetPassword"  
+  },
+  {
+    "element": "AuthenticationMethod",
+    "path": "/authenticationMethod"
   }
 ]

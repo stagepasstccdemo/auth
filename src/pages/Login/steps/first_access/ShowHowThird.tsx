@@ -1,4 +1,3 @@
-// @ts-nocheck
 import {
   Box,
   DefaultLayout,
@@ -8,42 +7,61 @@ import {
   MultiplePills,
 } from "@stagepass/osiris-ui";
 
-import EventsImage from "@assets/events-image.png";
+import EventsImage from "@assets/showHowThirdImage.png";
 import { useSwipeGestures } from "@hooks/useSwipeable";
 import { useEffect } from "react";
+import { useCookies } from "@hooks/useCookies";
+import { setPageProps } from "../types";
 
 const pills = [
-  { key: 1, selected: false, onClick: () => setPage("ShowHowFirst") },
-  { key: 2, selected: false, onClick: () => setPage("ShowHowSecond") },
-  { key: 3, selected: true, onClick: () => setPage("ShowHowThird") },
+  {
+    key: 1,
+    selected: false,
+    onClick: (setPage: setPageProps) => setPage("ShowHowFirst"),
+  },
+  {
+    key: 2,
+    selected: false,
+    onClick: (setPage: setPageProps) => setPage("ShowHowSecond"),
+  },
+  {
+    key: 3,
+    selected: true,
+    onClick: (setPage: setPageProps) => setPage("ShowHowThird"),
+  },
 ];
 
 export function ShowHowThird({ setPage }) {
+  const { setCookie } = useCookies();
+
   const { swipeGestures } = useSwipeGestures({
     handler: {
-      left: () => setPage("ChoiceSelection"),
+      left: () => {
+        setPage("AuthenticationMethod");
+        setCookie("@stagepass:not-first-access", true, 365);
+      },
       right: () => setPage("ShowHowSecond"),
     },
     swipeDuration: 800,
   });
 
   useEffect(() => {
-    setTimeout(() => {
-      setPage("ChoiceSelection");
+    const timeoutId = setTimeout(() => {
+      setPage("AuthenticationMethod");
+      setCookie("@stagepass:not-first-access", true, 365);
     }, 6000);
 
-    return () => {
-      clearTimeout();
-    };
-  }, [setPage]);
+    return () => clearTimeout(timeoutId);
+  }, [setPage, setCookie]);
 
   return (
     <DefaultLayout>
       <FullFlexWithGestures
         justifyContent="space-between"
+        // @ts-ignore
         swipe={swipeGestures}
       >
-        <Box px="40" py="52" pb="0">
+        <Box px="2.5rem" py="3.25rem" pb="0">
           <Heading
             as="h1"
             color="gray.100"
@@ -56,11 +74,17 @@ export function ShowHowThird({ setPage }) {
             src={EventsImage}
             alt="StagePass"
             objectFit="contain"
-            width="280px"
+            width="260px"
           />
         </Box>
 
-        <MultiplePills gap={20} pb={22} alignItems="center" pills={pills} />
+        <MultiplePills
+          alignItems="center"
+          gap={20}
+          pb={22}
+          pills={pills}
+          setPage={setPage}
+        />
       </FullFlexWithGestures>
     </DefaultLayout>
   );

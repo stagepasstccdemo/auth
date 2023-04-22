@@ -28,7 +28,9 @@
           "@pages": "./src/pages",
           "@services": "./src/services",
           "@routes": "./src/routes",
-          "@util": "./src/util"
+          "@util": "./src/util",
+          "@schemas": "./src/schemas",
+          "@icons": "./src/assets/icons"
         }
       }
     ]

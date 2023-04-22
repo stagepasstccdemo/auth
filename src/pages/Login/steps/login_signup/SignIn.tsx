@@ -6,37 +6,81 @@ import {
   Box,
   IconButton,
   Button,
-  InputWithLabel,
   Divider,
+  Form,
+  FormFields,
+  Toaster,
+  useToast,
 } from "@stagepass/osiris-ui";
 
-import { IoArrowBack } from "react-icons/io5";
-import { FaGoogle } from "react-icons/fa";
-import { useAuth } from "@services/auth";
+import { FaGoogle, IoArrowBack } from "@assets/icons";
+
+import { useState } from "react";
+import { useAuth } from "@hooks/useAuth";
+
+import { useForm } from "react-hook-form";
+
+import {
+  SignInUserFormType,
+  signInUserResolver,
+} from "@schemas/useCases/signInUserFormSchema";
+import { useNavigate } from "react-router-dom";
 
 export function SignIn({ setPage }) {
-  const { signInWithGoogle } = useAuth();
+  const [loading, setLoading] = useState(false);
+  const { signInWithGoogle, signInWithPassword } = useAuth();
+  const navigate = useNavigate();
+  const toast = useToast();
 
   const handleSignUp = () => {
-    setPage("SignUp");
+    return setPage ? setPage("SignUp") : navigate("/signUp");
   };
 
   const handleGoBack = () => {
-    setPage("ChoiceSelection");
+    return setPage
+      ? setPage("AuthenticationMethod")
+      : navigate("/authenticationMethod");
   };
 
   const handleResetPassword = () => {
-    setPage("ResetPassword");
+    return setPage ? setPage("ResetPassword") : navigate("/resetPassword");
+  };
+
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<SignInUserFormType>({
+    resolver: signInUserResolver,
+  });
+
+  const signInUser = async (formData: SignInUserFormType) => {
+    setLoading(true);
+    const { error } = await signInWithPassword(
+      formData.email,
+      formData.password
+    );
+
+    setLoading(false);
+
+    if (error) {
+      toast.error(error.message, {
+        position: "top-center",
+        duration: 5000,
+      });
+    }
   };
 
   return (
     <DefaultLayout>
-      <Flex direction="column" px="20" py="32" gap="5">
+      <Flex direction="column" px="1.25rem" py="2rem" gap="5">
         <Box display="flex" justifyContent="space-between" alignItems="center">
           <IconButton
+            h="3rem"
+            w="3rem"
             rounded="xl"
-            icon={<IoArrowBack color="white" size={26} />}
             bgColor="gray.700"
+            icon={<IoArrowBack color="white" size={26} />}
             onClick={handleGoBack}
           />
           <Button
@@ -48,66 +92,36 @@ export function SignIn({ setPage }) {
             SignUp
           </Button>
         </Box>
-
         <Heading as="h2" text="Sign In" mb="5" color="gray.100" />
       </Flex>
-      <Box
-        height="78vh"
-        bgColor="white"
-        borderTopRadius={40}
-        p={20}
-        display="flex"
-        flexDirection="column"
-        justifyContent="space-around"
-      >
+
+      <Form onSubmit={handleSubmit(signInUser)}>
         <Flex direction="column" gap="20">
-          <InputWithLabel
+          <FormFields.Input
             text="Enter your email"
-            gap="5"
-            placeholder="john_doe@example.com"
-            bgColor="gray.700"
-            rounded="xl"
-            py={6}
+            placeholder="john-doe@mail.com"
+            name="email"
+            register={register}
+            error={errors.email}
           />
-          <InputWithLabel
+
+          <FormFields.Input
             text="Enter your password"
-            gap="5"
             placeholder="password"
-            bgColor="gray.700"
-            rounded="xl"
-            py={6}
+            type="password"
+            name="password"
+            register={register}
+            error={errors.password}
           />
-          <Button
-            variant="link"
-            fontSize="sm"
-            fontWeight="regular"
-            alignSelf="flex-end"
-            onClick={handleResetPassword}
-          >
+
+          <FormFields.Redirect onClick={handleResetPassword}>
             Forgot Password
-          </Button>
+          </FormFields.Redirect>
         </Flex>
 
-        <Box>
-          <Button
-            bgColor="gray.700"
-            color="gray.100"
-            rounded="xl"
-            width="100%"
-            mb="10"
-            py={6}
-          >
-            sign in
-          </Button>
-          <Divider
-            text="or"
-            border="1"
-            distance="6"
-            borderColor="gray.700"
-            borderWidth="2px"
-            rounded="full"
-          />
-
+        <Flex flexDirection="column">
+          <FormFields.Submit isLoading={loading}>sign in</FormFields.Submit>
+          <Divider />
           <Button
             bgColor="gray.700"
             color="gray.100"
@@ -122,8 +136,9 @@ export function SignIn({ setPage }) {
           >
             sign in with google
           </Button>
-        </Box>
-      </Box>
+        </Flex>
+      </Form>
+      <Toaster />
     </DefaultLayout>
   );
 }

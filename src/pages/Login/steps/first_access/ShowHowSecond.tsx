@@ -1,4 +1,3 @@
-// @ts-nocheck
 import {
   Box,
   DefaultLayout,
@@ -10,6 +9,7 @@ import {
 } from "@stagepass/osiris-ui";
 
 import { useSwipeGestures } from "@hooks/useSwipeable";
+import { setPageProps } from "../types";
 
 const badges = [
   { key: 1, text: "concerts", bgColor: "default" },
@@ -24,9 +24,21 @@ const badges = [
 ];
 
 const pills = [
-  { key: 1, selected: false, onClick: () => setPage("ShowHowFirst") },
-  { key: 2, selected: true, onClick: () => setPage("ShowHowSecond") },
-  { key: 3, selected: false, onClick: () => setPage("ShowHowThird") },
+  {
+    key: 1,
+    selected: false,
+    onClick: (setPage: setPageProps) => setPage("ShowHowFirst"),
+  },
+  {
+    key: 2,
+    selected: true,
+    onClick: (setPage: setPageProps) => setPage("ShowHowSecond"),
+  },
+  {
+    key: 3,
+    selected: false,
+    onClick: (setPage: setPageProps) => setPage("ShowHowThird"),
+  },
 ];
 
 export function ShowHowSecond({ setPage }) {
@@ -41,10 +53,11 @@ export function ShowHowSecond({ setPage }) {
   return (
     <DefaultLayout>
       <FullFlexWithGestures
-        justifyContent="space-between"
+        // @ts-ignore
         swipe={swipeGestures}
+        justifyContent="space-between"
       >
-        <Box px="40" py="52" pb="0">
+        <Box px="2.5rem" py="3.25rem" pb="0">
           <Heading
             as="h1"
             color="gray.100"
@@ -52,18 +65,26 @@ export function ShowHowSecond({ setPage }) {
           />
 
           <MultipleBadges
+            maxWidth={{ base: "100%", lg: "40%" }}
             direction="column"
             alignItems="start"
-            pt="20"
-            gap="20"
+            pt="1.25rem"
+            gap="1.25rem"
             badges={badges}
           />
-          <Flex alignItems="center" pt="40" pl="20" textAlign="flex-start">
+
+          <Flex alignItems="center" pt="3.25rem" pl="2.5rem">
             <Heading as="h2" color="gray.100" text="and a whole lot more..." />
           </Flex>
         </Box>
 
-        <MultiplePills gap={20} pb={22} alignItems="center" pills={pills} />
+        <MultiplePills
+          gap={20}
+          pb={22}
+          alignItems="center"
+          pills={pills}
+          setPage={setPage}
+        />
       </FullFlexWithGestures>
     </DefaultLayout>
   );

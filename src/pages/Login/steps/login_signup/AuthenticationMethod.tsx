@@ -1,22 +1,25 @@
-// @ts-nocheck
 import {
   Box,
   DefaultLayout,
   Flex,
   Heading,
   Button,
-  Text,
 } from "@stagepass/osiris-ui";
 
-import { IoTicketOutline } from "react-icons/io5";
+import { IoTicketOutline } from "@assets/icons";
+import { navigateToUrl } from "single-spa";
 
-export function ChoiceSelection({ setPage }) {
+export function AuthenticationMethod({ setPage }) {
   const handleSignIn = () => {
-    setPage("SignIn");
+    return setPage ? setPage("SignIn") : navigateToUrl("/signIn");
   };
 
   const handleSignUp = () => {
-    setPage("SignUp");
+    return setPage ? setPage("SignUp") : navigateToUrl("/signUp");
+  };
+
+  const handleExplore = () => {
+    navigateToUrl("/events");
   };
 
   return (
@@ -27,13 +30,19 @@ export function ChoiceSelection({ setPage }) {
         justifyContent="space-between"
         height="100vh"
       >
-        <Box px="40" py="52" pb="0">
+        <Box px="2.5rem" py="3.25rem" pb="0">
           <Heading as="h1" color="gray.100" text="Let`s Start our journey" />
         </Box>
 
         <IoTicketOutline size={320} />
 
-        <Flex direction="column" gap="20" pb="22" width="100vw" px="28">
+        <Flex
+          direction="column"
+          gap="2.5rem"
+          pb="1.375rem"
+          width="100vw"
+          px="1.75rem"
+        >
           <Button
             rounded="2xl"
             bgColor="gray.700"
@@ -43,9 +52,10 @@ export function ChoiceSelection({ setPage }) {
           >
             login
           </Button>
+
           <Button
             rounded="2xl"
-            bgColor="gray.400"
+            bgColor="os-secondary.300"
             color="gray.100"
             py={6}
             onClick={handleSignUp}
@@ -53,12 +63,9 @@ export function ChoiceSelection({ setPage }) {
             signup
           </Button>
         </Flex>
-        <Text
-          text="I just wanna explore"
-          color="gray.100"
-          textAlign="center"
-          mb="22"
-        />
+        <Button bgColor="transparent" color="gray.100" onClick={handleExplore}>
+          I just wanna explore
+        </Button>
       </Flex>
     </DefaultLayout>
   );
