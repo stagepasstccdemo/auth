@@ -48,22 +48,21 @@ export function SignUp({ setPage }) {
   const signUpUser = async (formData: SignUpUserType) => {
     setLoading(true);
     const { error } = await signUp(formData.email, formData.password);
-
     setLoading(false);
 
     if (error) {
-      toast.error(`Error while loggin-in - ${error.message}`, {
+      toast.error(`${error.message}`, {
         position: "top-center",
-        duration: 4000,
+        duration: 5000,
       });
     }
 
     if (!error) {
       toast.success(
-        "Welcome to StagePass - A confirmation email was sent to you, please confirm your email in order to be able to log in",
+        "A confirmation email was sent to you, please confirm your email in order to be able to log in",
         {
           position: "top-center",
-          duration: 4000,
+          duration: 6000,
         }
       );
 

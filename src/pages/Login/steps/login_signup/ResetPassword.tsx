@@ -28,16 +28,12 @@ import {
 
 export function ResetPassword({ setPage }) {
   const [loading, setLoading] = useState(false);
+  const { signInWithGoogle, sendResetPasswordEmail } = useAuth();
   const navigate = useNavigate();
   const toast = useToast();
-  const { signInWithGoogle, sendResetPasswordEmail } = useAuth();
-
-  const handleSignUp = () => {
-    setPage("SignUp");
-  };
 
   const handleGoBack = () => {
-    setPage("AuthenticationMethod");
+    return setPage ? setPage("AuthenticationMethod") : navigate("/signIn");
   };
 
   const {
@@ -54,20 +50,17 @@ export function ResetPassword({ setPage }) {
     setLoading(false);
 
     if (error) {
-      toast.error(`Error while loggin-in - ${error.message}`, {
+      toast.error(`${error.message}`, {
         position: "top-center",
-        duration: 4000,
+        duration: 5000,
       });
     }
 
     if (!error) {
-      toast.success(
-        "Welcome to StagePass - A confirmation email was sent to you, please confirm your email in order to be able to log in",
-        {
-          position: "top-center",
-          duration: 4000,
-        }
-      );
+      toast("A reset password link has been sent to your email address !", {
+        position: "top-center",
+        duration: 5000,
+      });
 
       navigate("/signIn");
     }
@@ -85,14 +78,6 @@ export function ResetPassword({ setPage }) {
             icon={<IoArrowBack color="white" size={26} />}
             onClick={handleGoBack}
           />
-          <Button
-            variant="link"
-            color="white"
-            fontWeight="regular"
-            onClick={handleSignUp}
-          >
-            SignUp
-          </Button>
         </Box>
         <Heading as="h2" text="Forgot your pasword ?" mb="5" color="gray.100" />
       </Flex>
@@ -106,27 +91,26 @@ export function ResetPassword({ setPage }) {
             register={register}
             error={errors.email}
           />
-        </Flex>
-
-        <Flex flexDirection="column">
-          <FormFields.Submit isLoading={loading}>
-            send reset code
-          </FormFields.Submit>
-          <Divider />
-          <Button
-            bgColor="gray.700"
-            color="gray.100"
-            rounded="xl"
-            width="100%"
-            mt="10"
-            justifyContent="center"
-            gap="5"
-            py={6}
-            leftIcon={<FaGoogle />}
-            onClick={signInWithGoogle}
-          >
-            sign in with google
-          </Button>
+          <Flex flexDirection="column">
+            <FormFields.Submit isLoading={loading}>
+              send reset code
+            </FormFields.Submit>
+            <Divider />
+            <Button
+              bgColor="gray.700"
+              color="gray.100"
+              rounded="xl"
+              width="100%"
+              mt="10"
+              justifyContent="center"
+              gap="5"
+              py={6}
+              leftIcon={<FaGoogle />}
+              onClick={signInWithGoogle}
+            >
+              sign in with google
+            </Button>
+          </Flex>
         </Flex>
       </Form>
       <Toaster />
