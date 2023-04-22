@@ -8,7 +8,7 @@ import {
   Text,
 } from "@stagepass/osiris-ui";
 
-import { IoTicketOutline } from "react-icons/io5";
+import { IoTicketOutline } from "@icons";
 
 export function AuthenticationMethod({ setPage }) {
   const handleSignIn = () => {

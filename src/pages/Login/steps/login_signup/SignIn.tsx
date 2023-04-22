@@ -11,8 +11,8 @@ import {
   FormFields,
 } from "@stagepass/osiris-ui";
 
-import { IoArrowBack } from "react-icons/io5";
-import { FaGoogle } from "react-icons/fa";
+import { FaGoogle, IoArrowBack } from "@icons";
+
 import { useAuth } from "@hooks/useAuth";
 import { useForm } from "react-hook-form";
 

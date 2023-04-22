@@ -1,7 +1,7 @@
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 
-export type SignInUserForm = z.infer<typeof signInUserFormSchema>;
+export type SignInUserFormType = z.infer<typeof signInUserFormSchema>;
 
 export const signInUserFormSchema = z.object({
   email: z
