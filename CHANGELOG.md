@@ -1,3 +1,10 @@
+## [1.8.3](https://github.com/stagePass/auth/compare/v1.8.2...v1.8.3) (2023-04-26)
+
+
+### Bug Fixes
+
+* minor issues due to styling because of new flex and box components ([6491699](https://github.com/stagePass/auth/commit/6491699c41804fee3bd6d261be78b4028fe3d1c1))
+
 ## [1.8.2](https://github.com/stagePass/auth/compare/v1.8.1...v1.8.2) (2023-04-22)
 
 
