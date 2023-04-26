@@ -11,6 +11,7 @@ import {
   FormFields,
   Toaster,
   useToast,
+  FlexContainer,
 } from "@stagepass/osiris-ui";
 
 import { FaGoogle, IoArrowBack } from "@assets/icons";
@@ -96,7 +97,7 @@ export function SignIn({ setPage }) {
       </Flex>
 
       <Form onSubmit={handleSubmit(signInUser)}>
-        <Flex direction="column" gap="20">
+        <FlexContainer direction="column" gap="20">
           <FormFields.Input
             text="Enter your email"
             placeholder="john-doe@mail.com"
@@ -117,7 +118,7 @@ export function SignIn({ setPage }) {
           <FormFields.Redirect onClick={handleResetPassword}>
             Forgot Password
           </FormFields.Redirect>
-        </Flex>
+        </FlexContainer>
 
         <Flex flexDirection="column">
           <FormFields.Submit isLoading={loading}>sign in</FormFields.Submit>

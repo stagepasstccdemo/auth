@@ -6,6 +6,7 @@ import {
   MultipleBadges,
   FullFlexWithGestures,
   MultiplePills,
+  TextBadge,
 } from "@stagepass/osiris-ui";
 
 import { useSwipeGestures } from "@hooks/useSwipeable";
