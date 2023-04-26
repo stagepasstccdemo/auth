@@ -63,7 +63,12 @@ export function AuthenticationMethod({ setPage }) {
             signup
           </Button>
         </Flex>
-        <Button bgColor="transparent" color="gray.100" onClick={handleExplore}>
+        <Button
+          bgColor="transparent"
+          color="gray.100"
+          onClick={handleExplore}
+          mb="1rem"
+        >
           I just wanna explore
         </Button>
       </Flex>

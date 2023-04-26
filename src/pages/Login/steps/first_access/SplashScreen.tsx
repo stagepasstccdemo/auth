@@ -35,12 +35,12 @@ export function SplashScreen({ setPage }) {
       <Center h="90vh">
         <Flex
           flexDirection="column"
-          gap="60"
+          gap="20"
           alignItems="center"
           justifyContent="center"
         >
           <Logo src={LogoImg} borderRadius="60px" boxSize="20rem" />
-          <Spinner boxSize={40} thickness="4px" speed="0.60s" color="white" />
+          <Spinner boxSize={20} thickness="6px" speed="0.60s" color="white" />
         </Flex>
       </Center>
     </DefaultLayout>
