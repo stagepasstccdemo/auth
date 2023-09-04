@@ -31,7 +31,12 @@ export function AuthenticationMethod({ setPage }) {
         height="100vh"
       >
         <Box px="2.5rem" py="3.25rem" pb="0">
-          <Heading as="h1" color="gray.100" text="Let`s Start our journey" />
+          <Heading
+            as="h1"
+            color="gray.100"
+            text="Let`s Start our journey"
+            fontSize={["2.5rem", "2.5rem", "3.5rem", "4rem", "4rem"]}
+          />
         </Box>
 
         <IoTicketOutline size={320} />
@@ -44,6 +49,7 @@ export function AuthenticationMethod({ setPage }) {
           px="1.75rem"
         >
           <Button
+            maxW={["100%", "100%", "20rem", "40rem", "40rem"]}
             rounded="2xl"
             bgColor="gray.700"
             color="gray.100"
@@ -54,6 +60,7 @@ export function AuthenticationMethod({ setPage }) {
           </Button>
 
           <Button
+            maxW={["100%", "100%", "20rem", "40rem", "40rem"]}
             rounded="2xl"
             bgColor="os-secondary.300"
             color="gray.100"
