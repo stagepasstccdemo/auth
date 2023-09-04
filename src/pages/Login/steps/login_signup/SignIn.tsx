@@ -26,12 +26,17 @@ import {
   signInUserResolver,
 } from "@schemas/useCases/signInUserFormSchema";
 import { useNavigate } from "react-router-dom";
+import { navigateToUrl } from "single-spa";
+
+// eslint-disable-next-line import/no-unresolved
+import { useStore } from "@stagepass/util-state";
 
 export function SignIn({ setPage }) {
   const [loading, setLoading] = useState(false);
   const { signInWithGoogle, signInWithPassword } = useAuth();
   const navigate = useNavigate();
   const toast = useToast();
+  const store = useStore();
 
   const handleSignUp = () => {
     return setPage ? setPage("SignUp") : navigate("/signUp");
@@ -63,6 +68,13 @@ export function SignIn({ setPage }) {
     );
 
     setLoading(false);
+
+    if (store.redirectUrl) {
+      navigateToUrl(store.redirectUrl);
+      return;
+    }
+
+    navigateToUrl("/events");
 
     if (error) {
       toast.error(error.message, {
