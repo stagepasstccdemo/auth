@@ -54,10 +54,6 @@ export const useAuth = () => {
     navigateToUrl("/");
   };
 
-  if (userSession && userSession.user !== null) {
-    navigateToUrl("/events");
-  }
-
   const signInWithGoogle = async () => {
     const { data, error } = await supabase.auth.signInWithOAuth({
       provider: "google",
