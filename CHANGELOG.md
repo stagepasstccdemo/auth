@@ -1,3 +1,10 @@
+## [1.8.4](https://github.com/stagePass/auth/compare/v1.8.3...v1.8.4) (2023-09-04)
+
+
+### Bug Fixes
+
+* remove infinite redirect to events when user is authenticated ([be29473](https://github.com/stagePass/auth/commit/be29473172c6469de7fb0574019c745e38aacd04))
+
 ## [1.8.3](https://github.com/stagePass/auth/compare/v1.8.2...v1.8.3) (2023-04-26)
 
 
