@@ -90,6 +90,9 @@ export function SignUp({ setPage }) {
       <Form onSubmit={handleSubmit(signUpUser)}>
         <FlexContainer direction="column" gap="20">
           <FormFields.Input
+            alignSelf="center"
+            maxW="40rem"
+            width="100%"
             text="Enter your email"
             placeholder="john-doe@mail.com"
             name="email"
@@ -98,6 +101,9 @@ export function SignUp({ setPage }) {
           />
 
           <FormFields.Input
+            alignSelf="center"
+            maxW="40rem"
+            width="100%"
             text="Enter your password"
             placeholder="password"
             type="password"
@@ -107,6 +113,9 @@ export function SignUp({ setPage }) {
           />
 
           <FormFields.Input
+            alignSelf="center"
+            maxW="40rem"
+            width="100%"
             text="Confirm your password"
             placeholder="password"
             type="password"
@@ -116,23 +125,37 @@ export function SignUp({ setPage }) {
           />
         </FlexContainer>
 
-        <Flex flexDirection="column">
-          <FormFields.Submit isLoading={loading}>sign up</FormFields.Submit>
-          <Divider />
-          <Button
-            bgColor="gray.700"
-            color="gray.100"
-            rounded="xl"
+        <Flex flexDirection="column" alignItems="center">
+          <Flex
+            maxW="100rem"
             width="100%"
-            mt="10"
+            alignItems="center"
             justifyContent="center"
-            gap="5"
-            py={6}
-            leftIcon={<FaGoogle />}
-            onClick={signInWithGoogle}
           >
-            sign in with google
-          </Button>
+            <FormFields.Submit isLoading={loading}>sign up</FormFields.Submit>
+          </Flex>
+          <Divider width="20rem" />
+          <Flex
+            maxW="100rem"
+            width="100%"
+            alignItems="center"
+            justifyContent="center"
+          >
+            <Button
+              bgColor="gray.700"
+              color="gray.100"
+              rounded="xl"
+              width="100%"
+              mt="10"
+              justifyContent="center"
+              gap="5"
+              py={6}
+              leftIcon={<FaGoogle />}
+              onClick={signInWithGoogle}
+            >
+              sign in with google
+            </Button>
+          </Flex>
         </Flex>
       </Form>
       <Toaster />

@@ -87,31 +87,48 @@ export function ResetPassword({ setPage }) {
       <Form onSubmit={handleSubmit(resetUserAccountPassword)}>
         <FlexContainer direction="column" gap="20">
           <FormFields.Input
+            alignSelf="center"
             text="Enter your email"
             placeholder="john-doe@mail.com"
             name="email"
             register={register}
             error={errors.email}
+            maxW="40rem"
+            width="100%"
           />
-          <Flex flexDirection="column">
-            <FormFields.Submit isLoading={loading}>
-              send reset code
-            </FormFields.Submit>
-            <Divider />
-            <Button
-              bgColor="gray.700"
-              color="gray.100"
-              rounded="xl"
+          <Flex flexDirection="column" alignItems="center">
+            <Flex
+              maxW="100rem"
               width="100%"
-              mt="10"
+              alignItems="center"
               justifyContent="center"
-              gap="5"
-              py={6}
-              leftIcon={<FaGoogle />}
-              onClick={signInWithGoogle}
             >
-              sign in with google
-            </Button>
+              <FormFields.Submit isLoading={loading}>
+                send reset code
+              </FormFields.Submit>
+            </Flex>
+            <Divider width="20rem" />
+            <Flex
+              maxW="100rem"
+              width="100%"
+              alignItems="center"
+              justifyContent="center"
+            >
+              <Button
+                bgColor="gray.700"
+                color="gray.100"
+                rounded="xl"
+                width="100%"
+                mt="10"
+                justifyContent="center"
+                gap="5"
+                py={6}
+                leftIcon={<FaGoogle />}
+                onClick={signInWithGoogle}
+              >
+                sign in with google
+              </Button>
+            </Flex>
           </Flex>
         </FlexContainer>
       </Form>
