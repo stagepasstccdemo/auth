@@ -1,6 +1,6 @@
 {
   "name": "@stagepass/auth",
-  "version": "1.8.4",
+  "version": "1.9.0",
   "private": true,
   "scripts": {
     "start": "webpack serve --port 8083",

@@ -1,3 +1,15 @@
+# [1.9.0](https://github.com/stagePass/auth/compare/v1.8.4...v1.9.0) (2023-09-04)
+
+
+### Bug Fixes
+
+* redirect after login ([a3566cd](https://github.com/stagePass/auth/commit/a3566cdf4b958122d3537c4b0687a3177aa0c4c3))
+
+
+### Features
+
+* set redirect when signin ([e92223d](https://github.com/stagePass/auth/commit/e92223dc781dfba86ea4a3e06345cc19436ae7e3))
+
 ## [1.8.4](https://github.com/stagePass/auth/compare/v1.8.3...v1.8.4) (2023-09-04)
 
 
