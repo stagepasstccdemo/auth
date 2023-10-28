@@ -7,7 +7,7 @@ import { Integrations } from "@sentry/tracing";
 import Root from "./root.component";
 
 Sentry.init({
-  dsn: "https://a5fe265f8716489bb751c5a172f55385@o4504899977936896.ingest.sentry.io/4505022371528704",
+  dsn: "insert-dsn-here",
   integrations: [new Integrations.BrowserTracing()],
   tracesSampleRate: 1.0,
   beforeSend: (event) => {
